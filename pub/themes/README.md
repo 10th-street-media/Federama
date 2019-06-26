@@ -9,8 +9,9 @@ Each theme is requried to provide a `style.css` and an `index.php` file. Federam
 + `followers.php` - A page that lists a user's followers.
 + `following.php` - A page that lists the accounts that a user follows.
 + `footer.php` - A footer for all public facing pages.
++ `index.php` - The front page that connects everything for most websites.
 + `liked.php` - A page listing all objects that a user has liked.
-+ `main.php` - The main page people see when they visit the website.
++ `main.php` - The main element people see when they visit the website.
 + `nav.php` - A navigation element.
 + `profile.php` - A user profile page. Sort of like an About page for a user.
 + `post.php` - A page for an individual post.
