@@ -1,16 +1,16 @@
 <?php
 /*
- * pub/includes/fed-login.php
+ * pub/the-login.php
  *
  * The main login page for Federama. Also provides functionality for login widget on main page
  *
  * since Federama version 0.1
  */
 
-include_once	"../../conn.php";
-include			"../../functions.php";
-require			"database-connect.php";
-require_once	"configuration-data.php";
+include_once	"../conn.php";
+include			"../functions.php";
+require			"includes/database-connect.php";
+require_once	"includes/configuration-data.php";
 
 if (isset($_COOKIE['id'])) {
 	redirect($website_url."dash/index.php?uid=".$_COOKIE['id']);
@@ -65,7 +65,7 @@ if(isset($_POST['loginsubmit'])) {
     session_destroy();
 }
 
-include_once "fed-header.php";
+include_once "includes/fed-header.php";
 ?>
 <?php
 if ($message != '' || NULL) {
@@ -73,7 +73,7 @@ if ($message != '' || NULL) {
 }
 ?>
 	<!-- THE CONTAINER for the main content -->
-	<main class="w3-container w3-content" style="max-width:1400px;margin-top:40px;">
+	<main class="w3-container w3-content" style="max-width:1400px;margin-top:50px;">
 
 		<!-- THE GRID -->
 		<div class="w3-cell-row w3-container">
@@ -103,5 +103,5 @@ if ($message != '' || NULL) {
 			<div class="w3-col w3-cell m3 l4">&nbsp;</div>
 		</div> <!-- end THE GRID -->
 <?php
-include_once "fed-footer.php";
+include_once "includes/fed-footer.php";
 ?>
