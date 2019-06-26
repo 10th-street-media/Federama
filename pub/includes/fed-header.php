@@ -13,7 +13,7 @@
 	setlocale(LC_MESSAGES, $default_locale);
 
 	// set the textdomain
-	$textdomain = "amore";
+	$textdomain = "federama";
 	bindtextdomain($textdomain, "locale");
 	bind_textdomain_codeset($textdomain, 'UTF-8');
 	textdomain($textdomain);
@@ -26,7 +26,7 @@
 	<link rel="shortcut icon" href="favicon.ico">
 	<title><?php echo _($pagetitle); ?></title>
 	<meta name="description" content="<?php echo $website_description; ?>">
-	<link href="<?php echo $website_url; ?>theme/<?php echo $current_theme; ?>/federama.css" rel="stylesheet" type="text/css">
+	<link href="<?php echo $website_url; ?>dash/style/dash-style-default.css" rel="stylesheet" type="text/css">
 </head>
 <body class="w3-theme-l5">
 	<div class="w3-top">
@@ -39,7 +39,7 @@
 		if (isset($_COOKIE['uname'])) {
 			echo "<a href=\"dash/index.php?uid=".$_COOKIE['id']."\">";
 		} else {
-			echo "<a href=\"includes/fed-login.php\">";
+			echo "<a href=\"the-login.php\">";
 		}
 		// see if a session is set and get the username, if so.
 		if (isset($_COOKIE['uname'])) {
@@ -51,6 +51,6 @@
 		echo "<a href=\"\#\">&#9776;</a>";
 ?>
 </div>
-		<div class="w3-center w3-padding">🖤</div>
+		<div class="w3-center w3-padding w3-xlarge"><b>Ꞙ</b></div>
 	</header>
 	</div> <!-- .w3-top -->

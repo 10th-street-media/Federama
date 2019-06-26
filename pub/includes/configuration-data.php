@@ -7,10 +7,10 @@
  * since Federama version 0.1
  *
  */
-
+require			"database-connect.php";
 // let's get the configuration data
 
-$mysiteq = "SELECT * FROM configuration";
+$mysiteq = "SELECT * FROM ".TBLPREFIX."configuration";
 $mysitequery = mysqli_query($dbconn,$mysiteq);
 while ($mysiteopt = mysqli_fetch_assoc($mysitequery)) {
 	$website_url                     = $mysiteopt['website_url'];
