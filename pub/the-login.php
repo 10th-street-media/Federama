@@ -25,7 +25,7 @@ if(isset($_POST['loginsubmit'])) {
 	$uname = $_POST['loginuser'];
 	$upass = $_POST['loginpass'];
 
-	$acc_query  = "SELECT * FROM users WHERE user_name='".$uname."'";
+	$acc_query  = "SELECT * FROM ".TBLPREFIX."users WHERE user_name='".$uname."'";
 	$acc_q      = mysqli_query($dbconn,$acc_query);
 
 /* is the user in the database?             			*/
@@ -41,7 +41,7 @@ if(isset($_POST['loginsubmit'])) {
  				session_start();
 				setcookie("id",$id,0);
 				setcookie("uname",$uname,0);
-				$loginq = "UPDATE users SET user_last_login='".date('Y-m-d H:i:s')."' WHERE user_id='".$id."'";
+				$loginq = "UPDATE ".TBLPREFIX."users SET user_last_login='".date('Y-m-d H:i:s')."' WHERE user_id='".$id."'";
 				$loginquery = mysqli_query($dbconn,$loginq);
 				redirect($website_url."dash/index.php?uid=".$id);
 
@@ -94,7 +94,7 @@ if ($message != '' || NULL) {
 				</form>
 	<?php
 				if($open_registration == TRUE) {
-					echo "\t\t\t<a href=\"fed-registration.php\">"._('Create an account')."</a>\n";
+					echo "\t\t\t<a href=\"the-registration.php\">"._('Create an account')."</a>\n";
 				} else {
 					echo "\n\n\t\t\t<!-- registrations are closed -->\n\n";
 				}
