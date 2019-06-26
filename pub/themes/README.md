@@ -17,3 +17,4 @@ Each theme is requried to provide a `style.css` and an `index.php` file. Federam
 + `shared.php` - A page listing all objects a user has shared.
 + `statistics.php` - A page showing the website's statistics.
 + `tag.php` - A page listing all public posts with a given tag.
++ `favicon.ico` - An icon to graphically represent the website in some applications.
