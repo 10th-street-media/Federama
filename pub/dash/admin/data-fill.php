@@ -22,9 +22,9 @@ require			"../../includes/database-connect.php";
 
 
 //
-// Fill the fed_locations table with some default data
+// Fill the ".TBLPREFIX."locations table with some default data
 //
-  $fill_locations_tbl = "INSERT INTO fed_locations (
+  $fill_locations_tbl = "INSERT INTO ".TBLPREFIX."locations (
                     location_id,
                     location_name,
                     location_parent
@@ -306,18 +306,18 @@ require			"../../includes/database-connect.php";
 
 
   if (mysqli_query($dbconn,$fill_locations_tbl)) {
-    /* translators: Do not translate fed_locations in following message */
-    echo _("Default data added to table <i>fed_locations</i>.")."<br>\n\n";
+    /* translators: Do not translate ".TBLPREFIX."locations in following message */
+    echo _("Default data added to table <i>".TBLPREFIX."locations</i>.")."<br>\n\n";
     } else {
     /* translators: Do not translate locations in following message */
-    echo _("Error: Could not add data to table <i>fed_locations </i>.")."<br>\n\n";
+    echo _("Error: Could not add data to table <i>".TBLPREFIX."locations </i>.")."<br>\n\n";
   }
 
 
 //
-// Fill the fed_time_zones table with some default data
+// Fill the ".TBLPREFIX."time_zones table with some default data
 //
-  $fill_time_zones_tbl = "INSERT INTO fed_time_zones (
+  $fill_time_zones_tbl = "INSERT INTO ".TBLPREFIX."time_zones (
                   time_zone_name,
                   time_zone_offset,
                   time_zone_dst_offset
@@ -830,11 +830,11 @@ require			"../../includes/database-connect.php";
                 ('Asia/Baghdad', '+03:00', '+03:00')";
 
   if (mysqli_query($dbconn,$fill_time_zones_tbl)) {
-    /* translators: Do not translate fed_time_zones in following message */
-    echo _("Default data added to table <i>fed_time_zones</i>.")."<br>\n\n";
+    /* translators: Do not translate ".TBLPREFIX."time_zones in following message */
+    echo _("Default data added to table <i>".TBLPREFIX."time_zones</i>.")."<br>\n\n";
   } else {
     /* translators: Do not translate time_zones in following message */
-    echo _("Error: Could not add data to table <i>fed_time_zones</i>.")."<br>\n\n";
+    echo _("Error: Could not add data to table <i>".TBLPREFIX."time_zones</i>.")."<br>\n\n";
   }
 
 //

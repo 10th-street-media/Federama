@@ -80,32 +80,24 @@ if (isset($_POST['startsubmit'])) {
 	$dbhost	= $_POST['dbhost'];
 	$dbname	= $_POST['dbname'];
 	$dbuser	= $_POST['dbuser'];
-	$dbpass1	= $_POST['dbpass1'];
-	$dbpass2	= $_POST['dbpass2'];
-	$sitekey	= makeid($newid);
-	$version = "Federama v0.1-alpha";
+	$dbpass	= $_POST['dbpass'];
+	$tblpre	= $_POST['tblprefix'];
+	$version = "Federama 0.1 <i>Alfresco</i>";
 
 /**
  * Time to see if the passphrase works well
  */
-	if (isset($dbpass1)) {
-		if (isset($dbpass2)) {
-
-			// Can the user type the same passphrase twice without typos?
-			if ($dbpass1 !== $dbpass2) {
-				$message	= "PASSPHRASE_MISMATCH";
-			}
-		}
+	if (isset($dbpass)) {
 
 		// Is the passphrase at least 16 characters long?
-		if (strlen($dbpass1) < 16) {
+		if (strlen($dbpass) < 16) {
 			$message = "SHORT_PASSPHRASE";
 
 		// Is the passphrase complex?
-		} else if (!preg_match("/^(?=\P{Ll}*\p{Ll})(?=\P{Lu}*\p{Lu})(?=\P{N}*\p{N})[\s\S]{8,}$/",$dbpass1)) {
+		} else if (!preg_match("/^(?=\P{Ll}*\p{Ll})(?=\P{Lu}*\p{Lu})(?=\P{N}*\p{N})[\s\S]{8,}$/",$dbpass)) {
 			$message = "NOT_COMPLEX";
 		}
-	} // end if isset $dbpass1
+	} // end if isset $dbpass
 
 	if (!isset($message)) {
 		/**
@@ -127,8 +119,8 @@ if (isset($_POST['startsubmit'])) {
 		$conndata .= "define(\"DBHOST\",\"".$dbhost."\");\n";
 		$conndata .= "define(\"DBNAME\",\"".$dbname."\");\n";
 		$conndata .= "define(\"DBUSER\",\"".$dbuser."\");\n";
-		$conndata .= "define(\"DBPASS\",\"".$dbpass1."\");\n";
-		$conndata .= "define(\"SITEKEY\",\"".$sitekey."\");\n";
+		$conndata .= "define(\"DBPASS\",\"".$dbpass."\");\n";
+		$conndata .= "define(\"TBLPREFIX\",\"".$tblpre."\");\n";
 		$conndata .= "define(\"VERSION\",\"".$version."\");\n";
 		$conndata .= "?>";
 
@@ -145,21 +137,18 @@ if (isset($_POST['startsubmit'])) {
  */
 
 $pagetitle = _("Welcome to Federama");
-include_once "../../includes/fed-header.php";
+include_once "header.php";
 
 ?>
 	<!-- THE CONTAINER for the main content -->
 	<main class="w3-container w3-content" style="max-width:1400px;margin-top:40px;">
 <?php
 switch ($message) {
-	case "PASSPHRASE_MISMATCH":
-		echo _("The passphrases do not match. Please try again.");
-		break;
 	case "SHORT_PASSPHRASE":
-		echo _("The passphrase is too short. Please try again.");
+		echo "\n<br>"._("The passphrase is too short. Please try again.");
 		break;
 	case "NOT_COMPLEX":
-		echo _("The passphrase is not complex. Please try again.");
+		echo "\n<br>"._("The passphrase is not complex. Please try again.");
 		break;
 }
 ?>
@@ -186,7 +175,7 @@ switch ($message) {
 				</p>
 				<p>
 					<label for"dbname"><?php echo _("Name"); ?></label>
-					<input type="text" name="dbname" id="dbname" class="w3-input w3-border w3-margin-bottom" maxlength="30" required value="amore" title="<?php echo _("The name of the database the website will use."); ?>">
+					<input type="text" name="dbname" id="dbname" class="w3-input w3-border w3-margin-bottom" maxlength="30" required value="federama" title="<?php echo _("The name of the database the website will use."); ?>">
 				</p>
 				<p>
 					<label for"dbuser"><?php echo _("Username"); ?></label>
@@ -194,11 +183,11 @@ switch ($message) {
 				</p>
 				<p>
 					<label for"dbpass1"><?php echo _("Passphrase"); ?></label>
-					<input type="text" name="dbpass1" id="dbpass1" class="w3-input w3-border w3-margin-bottom" maxlength="255" required title="<?php echo _("Passphrase must be at least 16 characters long."); ?>">
+					<input type="text" name="dbpass" id="dbpass" class="w3-input w3-border w3-margin-bottom" maxlength="255" required title="<?php echo _("Passphrase must be at least 16 characters long."); ?>">
 				</p>
 				<p>
-					<label for"dbpass2"><?php echo _("Verify passphrase"); ?></label>
-					<input type="text" name="dbpass2" id="dbpass2" class="w3-input w3-border w3-margin-bottom" maxlength="255" required title="<?php echo _("Verify your passphrase."); ?>">
+					<label for"dbpass2"><?php echo _("Table prefix"); ?></label>
+					<input type="text" name="tblprefix" id="tblprefix" class="w3-input w3-border w3-margin-bottom" maxlength="10" value="fed_" title="<?php echo _("An optional prefix for the tables"); ?>">
 				</p>
 				<p>
 					<input type="submit" name="startsubmit" id="startsubmit" class="w3-button w3-button-hover w3-block w3-theme-d3 w3-section w3-padding" value="<?php echo _('START SUBMIT'); ?>">
@@ -208,5 +197,5 @@ switch ($message) {
 			<div class="w3-col w3-cell m3 l4">&nbsp;</div> <!-- empty div for the purpose of positioning -->
 		</div> <!-- end THE GRID -->
 <?php
-include_once "../../includes/fed-footer.php";
+include_once "footer.php";
 ?>
