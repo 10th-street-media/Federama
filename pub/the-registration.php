@@ -1,6 +1,6 @@
 <?php
 /*
- * pub/includes/fed-registration.php
+ * pub/the-registration.php
  *
  * The main registration page for Federama. Also provides functionality for registration widget on main page
  *
