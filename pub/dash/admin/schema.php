@@ -241,8 +241,8 @@ require			"../../includes/database-connect.php";
 			  post_title tinytext COLLATE utf8mb4_unicode_ci NOT NULL,
 			  post_slug varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'URL friendly version of post_title',
 			  post_text text COLLATE utf8mb4_unicode_ci NOT NULL,
-			  post_status varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-			  post_type varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+			  post_status varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'draft, private, or public',
+			  post_type varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'post or page',
 			  post_modified_date datetime NOT NULL,
 			  post_tags text COLLATE utf8mb4_unicode_ci NOT NULL,
 			  post_categories text COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -268,7 +268,83 @@ require			"../../includes/database-connect.php";
 
 
 //
-// Create the privacy levels table
+// Create the ".TBLPREFIX."post_statuses table
+//
+  $create_post_statuses_tbl = "CREATE TABLE ".TBLPREFIX."post_statuses (
+    post_status_name varchar(20) NOT NULL,
+    PRIMARY KEY (post_status_name)
+  ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;";
+
+  if (mysqli_query($dbconn,$create_post_statuses_tbl)) {
+    /* translators: Do not translate ".TBLPREFIX."post_statuses in following message */
+    echo _("Table <i>".TBLPREFIX."post_statuses</i> successfully created.")."<br>\n\n";
+  } else {
+    /* translators: Do not translate ".TBLPREFIX."post_statuses in following message */
+    echo _("Error: Could not create table <i>".TBLPREFIX."post_statuses</i>.")."<br>\n\n";
+  }
+
+//
+// Fill the ".TBLPREFIX."post_statuses table with some default data
+// Some of these are aspirational
+//
+  $fill_post_statuses_tbl = "INSERT INTO ".TBLPREFIX."post_statuses (
+                            post_status_name
+                          ) VALUES
+                          ('DRAFT'),
+                          ('PRIVATE'),
+                          ('PUBLIC')";
+
+  if (mysqli_query($dbconn,$fill_post_statuses_tbl)) {
+    /* translators: Do not translate ".TBLPREFIX."post_statuses in following message */
+    echo _("Default data added to table <i>".TBLPREFIX."post_statuses</i>.")."<br>\n\n";
+  } else {
+    /* translators: Do not translate ".TBLPREFIX."post_statuses in following message */
+    echo _("Error: Could not add data to table <i>".TBLPREFIX."post_statuses</i>.")."<br>\n\n";
+  }
+
+
+
+//
+// Create the ".TBLPREFIX."post_types table
+//
+  $create_post_types_tbl = "CREATE TABLE ".TBLPREFIX."post_types (
+    post_type_name varchar(20) NOT NULL,
+    PRIMARY KEY (post_type_name)
+  ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;";
+
+  if (mysqli_query($dbconn,$create_post_types_tbl)) {
+    /* translators: Do not translate ".TBLPREFIX."post_types in following message */
+    echo _("Table <i>".TBLPREFIX."post_types</i> successfully created.")."<br>\n\n";
+  } else {
+    /* translators: Do not translate ".TBLPREFIX."post_types in following message */
+    echo _("Error: Could not create table <i>".TBLPREFIX."post_types</i>.")."<br>\n\n";
+  }
+
+//
+// Fill the ".TBLPREFIX."post_types table with some default data
+// Some of these are aspirational
+//
+  $fill_post_statuses_tbl = "INSERT INTO ".TBLPREFIX."post_types (
+                            post_type_name
+                          ) VALUES
+                          ('POST'),
+                          ('PAGE'),
+                          ('SINGLE_AUDIO'),
+                          ('SINGLE_IMAGE'),
+                          ('SINGLE_VIDEO')";
+
+  if (mysqli_query($dbconn,$fill_post_statuses_tbl)) {
+    /* translators: Do not translate ".TBLPREFIX."post_statuses in following message */
+    echo _("Default data added to table <i>".TBLPREFIX."post_statuses</i>.")."<br>\n\n";
+  } else {
+    /* translators: Do not translate ".TBLPREFIX."post_statuses in following message */
+    echo _("Error: Could not add data to table <i>".TBLPREFIX."post_statuses</i>.")."<br>\n\n";
+  }
+
+
+
+//
+// Create the ".TBLPREFIX."privacy levels table
 //
   $privacy_levels_tbl_comment = _("Table for privacy levels");
 

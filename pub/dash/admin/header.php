@@ -29,16 +29,17 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<link rel="shortcut icon" href="../../favicon.ico">
+	<link rel="shortcut icon" href="../images/favicon.ico">
 	<title><?php echo $pagetitle; ?></title>
 	<meta name="description" content="<?php echo $website_description; ?>">
 	<link href="../style/dash-style-default.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body class="w3-theme-l5">
 	<div class="w3-top">
 	<header class="w3-container w3-bar w3-large w3-theme-d1">
 		<div class="w3-left w3-padding"><!-- We may put something here eventually --></div>
 		<div class="w3-right w3-padding"><!-- We may put something here eventually --></div>
-		<div class="w3-center w3-padding w3-xlarge"><b>Ꞙ</b></div>
+		<div class="w3-center w3-padding w3-large"><b>Ꞙ</b></div>
 	</header>
 	</div> <!-- .w3-top -->

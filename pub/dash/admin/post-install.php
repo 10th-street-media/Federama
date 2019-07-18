@@ -24,8 +24,9 @@ if (isset($_POST['amosubmit'])) {
 	/**
 	 * collect our form data
 	 */
-	$amosite		= $_POST['amositename'];
-	$amouser		= $_POST['amoadmin'];
+	$amosite		= nicetext($_POST['amositename']);
+	$amositeurl	= nicetext($_POST['amositeurl'])."/";
+	$amouser		= nicetext($_POST['amoadmin']);
 	$amopass1	= $_POST['amopass1'];
 	$amopass2	= $_POST['amopass2'];
 
@@ -63,7 +64,7 @@ if (isset($_POST['amosubmit'])) {
 		$uid				= makeid($newid);
 		$udatecreate	= date('Y-m-d H:i:s');
 		$firstuserq		= "INSERT INTO ".TBLPREFIX."users (user_id, user_name, user_pass, user_level, user_actor_type, user_created, user_last_login) VALUES ('".$uid."', '".$amouser."', '".$hash_pass."', 'ADMINISTRATOR', 'PERSON', '".$udatecreate."', '".$udatecreate."')";
-		$firstadminq	= "UPDATE ".TBLPREFIX."configuration SET website_name='".$amosite."', admin_account='".$amouser."'";
+		$firstadminq	= "UPDATE ".TBLPREFIX."configuration SET website_name='".$amosite."', website_url='".$amositeurl."', admin_account='".$amouser."'";
 
 		$message = $firstuserq."<br>\n\n".$firstadminq;
 		$firstuserquery		= mysqli_query($dbconn,$firstuserq);
@@ -112,6 +113,10 @@ switch ($message) {
 				<p>
 					<label for "amositename"><?php echo _("Site name"); ?></label>
 					<input type="text" name="amositename" id="amositename" class="w3-input w3-border w3-margin-bottom" maxlength="255" required title="<?php echo _("The name of the website."); ?>">
+				</p>
+				<p>
+					<label for "amositeurl"><?php echo _("Site URL"); ?></label>
+					<input type="text" name="amositeurl" id="amositeurl" class="w3-input w3-border w3-margin-bottom" maxlength="50" required placeholder="https://example.com" title="<?php echo _("The URL of the website."); ?>">
 				</p>
 				<p>
 					<label for "amoadmin"><?php echo _("Username"); ?></label>

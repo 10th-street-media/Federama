@@ -82,7 +82,7 @@ if (isset($_POST['startsubmit'])) {
 	$dbuser	= $_POST['dbuser'];
 	$dbpass	= $_POST['dbpass'];
 	$tblpre	= $_POST['tblprefix'];
-	$version = "Federama 0.1 <i>Alfresco</i>";
+	$version = "Federama 0.1";
 
 /**
  * Time to see if the passphrase works well
