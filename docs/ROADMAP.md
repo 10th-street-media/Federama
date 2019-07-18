@@ -27,6 +27,7 @@
 + Images can be used in posts, pages, and messages
 + User messages to and from other Federama instances
 + testing instances at federama.social
++ Pretty URLs with Apache and nginx
 
 ## v0.4
 + Content warnings for messages, posts, pages, audio, video, and images
