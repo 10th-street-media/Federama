@@ -27,4 +27,6 @@ while ($mysiteopt = mysqli_fetch_assoc($mysitequery)) {
    $list_with_fediverse_network     = $mysiteopt['list_with_fediverse_network'];
    $list_with_federama_social       = $mysiteopt['list_with_federama_social'];
 }
+
+$theme_path = $website_url."themes/".$active_theme;
 ?>

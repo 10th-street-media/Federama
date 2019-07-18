@@ -26,7 +26,7 @@
 	<link rel="shortcut icon" href="favicon.ico">
 	<title><?php echo _($pagetitle); ?></title>
 	<meta name="description" content="<?php echo $website_description; ?>">
-	<link href="<?php echo $website_url; ?>dash/style/dash-style-default.css" rel="stylesheet" type="text/css">
+	<link href="<?php echo $theme_path."/style.css"; ?>" rel="stylesheet" type="text/css">
 </head>
 <body class="w3-theme-l5">
 	<div class="w3-top">
@@ -37,9 +37,9 @@
 		// if a user is logged in, display their username and link to dash/my-profile.php
 		// if a user isn't logged in, display $visitortitle and link to the-login.php
 		if (isset($_COOKIE['uname'])) {
-			echo "<a href=\"dash/index.php?uid=".$_COOKIE['id']."\">";
+			echo "<a href=\"".$website_url."dash/index.php\">";
 		} else {
-			echo "<a href=\"the-login.php\">";
+			echo "<a href=\"".$website_url."the-login.php\">";
 		}
 		// see if a session is set and get the username, if so.
 		if (isset($_COOKIE['uname'])) {
@@ -51,6 +51,6 @@
 		echo "<a href=\"\#\">&#9776;</a>";
 ?>
 </div>
-		<div class="w3-center w3-padding w3-xlarge"><b>Ꞙ</b></div>
+		<div class="w3-center w3-padding w3-large"><b>Ꞙ</b></div>
 	</header>
 	</div> <!-- .w3-top -->

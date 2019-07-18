@@ -1,7 +1,7 @@
-# **Federama** v0.1 Documentation
+# **Federama** Documentation
 
-The documentation for **Federama** v0.1 is divided into two sections:
+The documentation for **Federama** is divided into two sections:
 + [Admin](admin/README.md)
 + [Reference](reference/README.md)
 
-Since the software is still being developed, the documentation may not reflect the current state of development. However, the documentation will be updated for each major release or milestone.
+Since the software is still being developed, the documentation process will be haphazard and inconsistent, at least until version 1.0.
