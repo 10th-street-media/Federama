@@ -17,7 +17,7 @@ require_once	"includes/configuration-data.php";
  * if so, send them to their profile page.
  */
 if (isset($_COOKIE['id'])) {
-	redirect($website_url."dash/my-profile.php?uid=".$_COOKIE['id']);
+	redirect($website_url."dash/profile.php");
 }
 
 

@@ -13,7 +13,7 @@ require			"includes/database-connect.php";
 require_once	"includes/configuration-data.php";
 
 if (isset($_COOKIE['id'])) {
-	redirect($website_url."dash/index.php?uid=".$_COOKIE['id']);
+	redirect($website_url."dash/index.php");
 } else {
 	$visitortitle = _('Guest');
 }
@@ -43,7 +43,7 @@ if(isset($_POST['loginsubmit'])) {
 				setcookie("uname",$uname,0);
 				$loginq = "UPDATE ".TBLPREFIX."users SET user_last_login='".date('Y-m-d H:i:s')."' WHERE user_id='".$id."'";
 				$loginquery = mysqli_query($dbconn,$loginq);
-				redirect($website_url."dash/index.php?uid=".$id);
+				redirect($website_url."dash/index.php");
 
 /* if the password is incorrect							*/
 			} else {
