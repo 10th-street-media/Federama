@@ -93,7 +93,7 @@ if ($open_registration == FALSE) {
 $pagetitle = _("Home");
 $objdescription = $website_description;
 
-include_once "includes/fed-header.php";
+include_once "header.php";
 ?>
 	<!-- The Container for the main content -->
 	<main class="w3-container w3-content" style="max-width:1400px;margin-top:40px;">
@@ -104,7 +104,7 @@ include_once "includes/fed-header.php";
 if ($message != '' || NULL) {
 	echo header_message($message);
 }
-include "the-feeds.php";
+include "includes/feeds.php";
 ?>
 
 		<!-- The Grid -->

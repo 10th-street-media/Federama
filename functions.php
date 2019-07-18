@@ -14,7 +14,7 @@ include "conn.php";
 $dbconn = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
 mysqli_set_charset($dbconn, "utf8");
 
-$metadescription = _("<i>Federama</i> is an open-source PHP framework and blogging software for the Fediverse - a decentralized social network of thousands of different communities and millions of users.");
+$metadescription = _("<i>Federama</i> is an open-source PHP framework and microblogging software for the Fediverse - a decentralized social network of thousands of different communities and millions of users.");
 
 // creates a 20 character ID
 function makeid($newid) {
@@ -46,6 +46,33 @@ function nicetext($text) {
 	$text = htmlspecialchars($text,ENT_QUOTES,'UTF-8',true);
 	return $text;
 }
+
+
+
+
+// turns a title into a url-friendly slug
+function makeslug($text) {
+	/**
+	 * taken from https://stackoverflow.com/questions/11330480/strip-php-variable-replace-white-spaces-with-dashes
+	 */
+
+	// make all letters lowercase
+	$text		= strtolower($text);
+
+	// make it alphanumeric and turn other characters into hyphens
+	$text = preg_replace("/[^a-z0-9_\s-]/", "", $text);
+
+	// clean up multiple hyphens and whitespaces
+	$text = preg_replace("/[\s-]+/", " ", $text);
+
+	// convert whitespaces and underscores to hyphens
+	$text = preg_replace("/[\s_]/", "-", $text);
+
+	return $text;
+}
+
+
+
 
 // displays a warning message on a page
 function warning_message($message) {
@@ -123,7 +150,7 @@ function short_url($url) {
  // get the number of users
  function user_quantity($users) {
  	$dbconn = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
- 	$userqq = "SELECT * FROM users";
+ 	$userqq = "SELECT * FROM ".TBLPREFIX."users";
  	$userqquery = mysqli_query($dbconn,$userqq);
  	$userqty = mysqli_num_rows($userqquery);
 
@@ -136,7 +163,7 @@ function users_half_year($sometimes_users) {
 
 	$usershalfyear = 0;
 
-	$usershalfyearq = "SELECT * FROM users";
+	$usershalfyearq = "SELECT * FROM ".TBLPREFIX."users";
 	$usershalfyearquery = mysqli_query($dbconn,$usershalfyearq);
 	while ($usershalfyearopt = mysqli_fetch_assoc($usershalfyearquery)) {
 		$lastlogin	= strtotime($usershalfyearopt['user_last_login']);
@@ -155,7 +182,7 @@ function users_half_year($sometimes_users) {
 
 	$usersmonthqty = 0;
 
-	$usersmonthq = "SELECT * FROM users";
+	$usersmonthq = "SELECT * FROM ".TBLPREFIX."users";
 	$usersmonthquery = mysqli_query($dbconn,$usersmonthq);
 	while ($usersmonthopt = mysqli_fetch_assoc($usersmonthquery)) {
 		$lastlogin	= strtotime($usersmonthopt['user_last_login']);
@@ -171,7 +198,7 @@ function users_half_year($sometimes_users) {
  // get the number of posts
  function post_quantity($posts) {
  	$dbconn = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
- 	$postqq = "SELECT * FROM posts";
+ 	$postqq = "SELECT * FROM ".TBLPREFIX."posts";
  	$postqquery = mysqli_query($dbconn,$postqq);
  	$postqty = mysqli_num_rows($postqquery);
 
@@ -181,7 +208,7 @@ function users_half_year($sometimes_users) {
 // Get the number of a user's posts from user_outbox in users table
 function user_post_quantity($userid) {
 	$dbconn = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
-	$postsbyq = "SELECT * FROM posts WHERE posts_by='".$userid."'";
+	$postsbyq = "SELECT * FROM ".TBLPREFIX."posts WHERE user_id='".$userid."'";
  	$postsbyquery = mysqli_query($dbconn,$postsbyq);
  	$postsbyqty = mysqli_num_rows($postsbyquery);
 
@@ -195,10 +222,10 @@ function user_post_quantity($userid) {
 // get the date of the latest post for the Atom feed
 function atom_updated($time) {
 	$dbconn = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
-	$postqq = "SELECT * FROM posts WHERE posts_privacy_level=\"6ьötХ5áзÚZ\" ORDER BY posts_timestamp DESC LIMIT 1";
+	$postqq = "SELECT * FROM ".TBLPREFIX."posts WHERE post_status=\"6ьötХ5áзÚZ\" ORDER BY post_date DESC LIMIT 1";
 	$postqquery = mysqli_query($dbconn,$postqq);
 	while ($postopt = mysqli_fetch_assoc($postqquery)) {
-		$updated = $postopt['posts_timestamp'];
+		$updated = $postopt['post_date'];
 		return date("c", strtotime($updated));
 	}
 }

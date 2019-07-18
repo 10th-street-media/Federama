@@ -9,4 +9,4 @@ The goal for version 1.0 of **Federama** is to make it easy to develop PHP appli
 The [documentation](docs/README.md) for **Federama** is split into two sections: [admin](docs/admin/README.md) and [reference](docs/reference/README.md). The admin documentation is intended for people who want to setup and run an instance of **Federama**, while the reference documentation is intended for those who are interested in **Federama** development.
 
 ### License
-**Federama** is open-source software and is released under the [Apache License, version 2.0](LICENSE).
+**Amore** is open-source software and is released under the [Apache License, version 2.0](LICENSE).
