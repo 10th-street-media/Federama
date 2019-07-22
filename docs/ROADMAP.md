@@ -15,7 +15,7 @@
 + Admin can do basic site configuration
 + Users can modify their profiles and change passwords
 + Posts can be edited or deleted.
-+ Pages can be created, editied, and deleted.
++ Pages can be created, edited, and deleted.
 + Messages can be created and sent to users on the same instance
 + Nodeinfo
 + RSS and Atom feeds for site and for users.
@@ -26,7 +26,7 @@
 + Users can have avatars
 + Images can be used in posts, pages, and messages
 + User messages to and from other Federama instances
-+ testing instances at federama.social
++ testing instances at federama.social and amore.social
 + Pretty URLs with Apache and nginx
 
 ## v0.4
