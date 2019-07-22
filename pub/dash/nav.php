@@ -22,7 +22,14 @@
 				<a href="<?php echo $website_url."dash/contacts.php"; ?>" class="w3-bar-item w3-button" title="<?php echo _("Your contact lists."); ?>"><i class="fa fa-lg fa-address-book"></i>&nbsp;<?php echo _("Contacts"); ?></a>
 				<a href="<?php echo $website_url."dash/bookmarks.php"; ?>" class="w3-bar-item w3-button" title="<?php echo _("Items you've liked or disliked."); ?>"><i class="fa fa-lg fa-bookmark"></i>&nbsp;<?php echo _("Noteworthy"); ?></a>
 				<a href="<?php echo $website_url."dash/media.php"; ?>" class="w3-bar-item w3-button" title="<?php echo _("Images, audio, and video on this instance."); ?>"><i class="fa fa-lg fa-file-image-o"></i>&nbsp;<?php echo _("Media"); ?></a>
-				<a href="<?php echo $website_url."dash/profile.php"; ?>" class="w3-bar-item w3-button" title="<?php echo _("Your profile."); ?>"><i class="fa fa-lg fa-user" ></i>&nbsp;<?php echo _("Profile"); ?></a>
+				<a href="#" class="w3-bar-item w3-button" title="<?php echo _("Your profile."); ?>" onclick="myProfile()"><i class="fa fa-lg fa-user" ></i>&nbsp;<?php echo _("Profile"); ?>&nbsp;<i class="fa fa-caret-down w3-right"></i></a>
+					<div id="profileMenu" class="w3-hide w3-white w3-card">
+						<a href="<?php echo $website_url."dash/profile.php"; ?>" class="w3-bar-item w3-button"><?php echo _('View profile'); ?></a>
+						<a href="<?php echo $website_url."dash/edit-profile.php"; ?>" class="w3-bar-item w3-button"><?php echo _('Edit profile'); ?></a>
+						<a href="<?php echo $website_url."dash/import-profile.php"; ?>" class="w3-bar-item w3-button"><?php echo _('Import profile'); ?></a>
+						<a href="<?php echo $website_url."dash/export-profile.php"; ?>" class="w3-bar-item w3-button"><?php echo _('Export profile'); ?></a>
+						<a href="<?php echo $website_url."dash/delete-profile.php"; ?>" class="w3-bar-item w3-button"><?php echo _('Delete profile'); ?></a>
+					</div>
 <?php
 $adminq = "SELECT * FROM ".TBLPREFIX."users WHERE user_id=".$_COOKIE['id'];
 $adminquery = mysqli_query($dbconn,$adminq);
@@ -59,6 +66,18 @@ while($adminopt = mysqli_fetch_assoc($adminquery)) {
 ?>
 			</nav>
 			<script>
+			function myProfile() {
+			  var x = document.getElementById("profileMenu");
+			  if (x.className.indexOf("w3-show") == -1) {
+			    x.className += " w3-show";
+			    x.previousElementSibling.className += " w3-theme-d1";
+			  } else {
+			    x.className = x.className.replace(" w3-show", "");
+			    x.previousElementSibling.className =
+			    x.previousElementSibling.className.replace(" w3-theme-d1", "");
+			  }
+			}
+
 			function myUsersMenu() {
 			  var x = document.getElementById("usersMenu");
 			  if (x.className.indexOf("w3-show") == -1) {
