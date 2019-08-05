@@ -1,8 +1,8 @@
 <?php
 /*
- * pub/dash/admin/moderation-queue.php
+ * pub/dash/admin/tools.php
  *
- * A page where comments and messages are held for moderation.
+ * A page with tools an admin can use for useful tasks.
  *
  * since Federama version 0.2
  */
@@ -13,15 +13,20 @@ require			"../../includes/database-connect.php";
 require_once	"../../includes/configuration-data.php";
 require_once	"../../includes/verify-cookies.php";
 
-$pagetitle = _("Plugins « $website_name « Ꞙederama");
+$pagetitle = _("Tools « $website_name « Ꞙederama");
 include "header.php";
 include "../nav.php";
 ?>
 
 			<article class="w3-content w3-padding">
 
-				<h2 class="w3-padding"><?php echo _("Moderation queue"); ?></h2>
-
+				<h2 class="w3-padding"><?php echo _("Tools"); ?></h2>
+				<ul>
+					<li>Import</li>
+					<li>Export</li>
+					<li>Categories</li>
+					<li>Tags</li>
+				</ul>
 
 			</article> <!-- end article (It's not really an article, but it serves the same purpose.) -->
 

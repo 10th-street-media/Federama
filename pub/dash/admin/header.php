@@ -38,8 +38,14 @@
 <body class="w3-theme-l5">
 	<div class="w3-top">
 	<header class="w3-container w3-bar w3-large w3-theme-d1">
-		<div class="w3-left w3-padding"><!-- We may put something here eventually --></div>
-		<div class="w3-right w3-padding"><!-- We may put something here eventually --></div>
-		<div class="w3-center w3-padding w3-large"><b>Ꞙ</b></div>
+		<div class="w3-left w3-padding"><?php echo $website_name; ?></div>
+		<div class="w3-right w3-padding"><?php
+if ($u_dname !== "") {
+	echo _("Hello, <a href=\"".$website_url."dash/profile.php\">$u_dname</a>");
+} else {
+	echo _("Hello, <a href=\"".$website_url."dash/profile.php\">$u_name</a>");
+}
+?></div>
+		<div class="w3-center w3-padding w3-large"><img src="<?php echo $website_url; ?>images/federama-logo-white-24.png"></div>
 	</header>
 	</div> <!-- .w3-top -->

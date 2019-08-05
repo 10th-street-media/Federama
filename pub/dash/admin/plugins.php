@@ -1,8 +1,8 @@
 <?php
 /*
- * pub/dash/admin/moderation-queue.php
+ * pub/dash/admin/plugins.php
  *
- * A page where comments and messages are held for moderation.
+ * A page where installed plugins are listed and activated.
  *
  * since Federama version 0.2
  */
@@ -20,7 +20,7 @@ include "../nav.php";
 
 			<article class="w3-content w3-padding">
 
-				<h2 class="w3-padding"><?php echo _("Moderation queue"); ?></h2>
+				<h2 class="w3-padding"><?php echo _("Plugins"); ?></h2>
 
 
 			</article> <!-- end article (It's not really an article, but it serves the same purpose.) -->
