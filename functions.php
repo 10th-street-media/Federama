@@ -34,6 +34,9 @@ function makeid($newid) {
 	return mb_substr($tmp2,0,20,"UTF-8");
 }
 
+
+
+
 // sanitizes text inputs from forms
 function nicetext($text) {
 	// get rid of whitespace characters at start or end of text
@@ -71,8 +74,29 @@ function makeslug($text) {
 	return $text;
 }
 
+// finds @usernames and turns them into links
+function userparser($text) {
+
+	/**
+	 *	Look for @user@instance.tld
+	 * See if instance.tld has an account named 'user'
+	 * If yes, create a link
+	 * Else leave as plain text
+	 */
 
 
+	/**
+	 * Look for @user with a space after their name
+	 * Check against list of users on this instance
+	 * If user exists, create a link
+	 * Else leave as plain text
+	 *
+	 * Let us stick with basic letters, numbers, and underscores
+	 */
+	if($textuser = preg_match_all('/@{1}[a-zA-Z0-9_]+\s+/i',$text)) {
+
+	}
+}
 
 // displays a warning message on a page
 function warning_message($message) {
@@ -127,7 +151,6 @@ function message($message) {
 
 	return $msg;
 }
-
 
 // redirects to another page
 function redirect($location) {
@@ -198,11 +221,21 @@ function users_half_year($sometimes_users) {
  // get the number of posts
  function post_quantity($posts) {
  	$dbconn = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
- 	$postqq = "SELECT * FROM ".TBLPREFIX."posts";
+ 	$postqq = "SELECT * FROM ".TBLPREFIX."posts WHERE post_type='POST'";
  	$postqquery = mysqli_query($dbconn,$postqq);
  	$postqty = mysqli_num_rows($postqquery);
 
  	return $postqty;
+ }
+
+ // get the number of posts
+ function page_quantity($pages) {
+ 	$dbconn = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
+ 	$pageqq = "SELECT * FROM ".TBLPREFIX."posts WHERE post_type='PAGE'";
+ 	$pageqquery = mysqli_query($dbconn,$pageqq);
+ 	$pageqty = mysqli_num_rows($pageqquery);
+
+ 	return $pageqty;
  }
 
 // Get the number of a user's posts from user_outbox in users table

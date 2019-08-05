@@ -41,19 +41,19 @@ if(isset($_POST['loginsubmit'])) {
  				session_start();
 				setcookie("id",$id,0);
 				setcookie("uname",$uname,0);
-				$loginq = "UPDATE ".TBLPREFIX."users SET user_last_login='".date('Y-m-d H:i:s')."' WHERE user_id='".$id."'";
+				$loginq = "UPDATE ".TBLPREFIX."users SET user_last_login='".date('Y-m-d H:i:s')."', user_session='".session_id()."' WHERE user_id='".$id."'";
 				$loginquery = mysqli_query($dbconn,$loginq);
 				redirect($website_url."dash/index.php");
 
 /* if the password is incorrect							*/
 			} else {
-				$message = _("There was a problem. Please try again.");
+				$message = "PASSPHRASE_INCORRECT";
 			} /* end if password verify 					*/
 		} /* end while $acc_cic								*/
 
 /* the user IS NOT in the db								*/
 	} else {
-		$message = _("User not found");
+		$message = "USER_NOT_FOUND";
 
 	}
 
@@ -67,16 +67,26 @@ if(isset($_POST['loginsubmit'])) {
 
 include_once "includes/fed-header.php";
 ?>
-<?php
-if ($message != '' || NULL) {
-	echo header_message($message);
-}
-?>
 	<!-- THE CONTAINER for the main content -->
 	<main class="w3-container w3-content" style="max-width:1400px;margin-top:50px;">
 
 		<!-- THE GRID -->
 		<div class="w3-cell-row w3-container">
+<?php
+switch ($message) {
+	case "PASSPHRASE_INCORRECT":
+		echo "\t\t\t<section class=\"w3-panel w3-leftbar w3-pale-yellow w3-padding\">";
+		echo _("The passphrase was entered incorrectly. Please try again.");
+		echo "</section><br>\n";
+		break;
+	case "USER_NOT_FOUND":
+		echo "\t\t\t<section class=\"w3-panel w3-leftbar w3-pale-yellow w3-padding\">";
+		echo _("The username was not found. Perhaps it was entered incorrectly.");
+		echo "</section><br>\n";
+		break;
+}
+?>
+
 			<div class="w3-col w3-cell m3 l4">&nbsp;</div>
 
 			<div class="w3-col w3-panel w3-cell m6 l4">

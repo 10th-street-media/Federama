@@ -76,7 +76,9 @@ require_once	"includes/configuration-data.php";
 // see if a session is set. If so, redirect them to their dashboard.
 
 if (isset($_COOKIE['id'])) {
-	redirect("dash/index.php");
+	if ($_COOKIE['id'] != '') {
+		redirect("dash/index.php");
+	}
 } else {
 	$visitortitle = _('Guest');
 }
@@ -86,12 +88,16 @@ $pagetitle = _("Home");
 $objdescription = $website_description;
 
 include_once "includes/fed-header.php";
+
 #include_once $theme_path."/header.php";
 #echo $theme_path."/header.php";
 ?>
 	<!-- THE CONTAINER for the main content -->
 	<main class="w3-row w3-content" style="max-width:1400px;margin-top:40px;">
-
+<?php
+include "feeds.php";
+include "nodeinfo.php";
+?>
 		<!-- THE GRID -->
 		<div class="w3-cell-row">
 
@@ -129,7 +135,7 @@ if (mysqli_num_rows($getpostsquery) > 0) {
 
 		echo "\t\t\t<article class=\"w3-content w3-padding\">\n";
 		echo "\t\t\t\t<h2 class=\"w3-text-theme w3-container w3-bar\"><a href=\"".$website_url."posts/".$post_slug."\">".$post_title."</a></h2>\n";
-		echo "\t\t\t\t<span class=\"w3-container w3-block\">"._('Posted on ').$post_date._(' by ')."<a href=\"".$website_url."users/".$user_name."/\">".$uname."</a></span><br>\n";
+		echo "\t\t\t\t<span class=\"w3-container w3-block\">"._('Posted on ').$post_date._(' by ')."<a href=\"".$website_url."users/".$user_name."\">".$uname."</a></span><br>\n";
 		echo "\t\t\t\t<div class=\"w3-container w3-block\">\n";
 		echo htmlspecialchars_decode($post_text);
 		echo "\t\t\t\t</div>\n";
