@@ -65,7 +65,7 @@ if (mysqli_num_rows($dashpostsquery) > 0) {
 
 
 		echo "\t\t\t\t\t<tr>\n";
-		echo "\t\t\t\t\t\t<td><a href=\"".$website_url."posts/".$post_slug."\">".$post_title."</a></td><td><a href=\"".$website_url."users/".$user_name."/\">".$uname."</a></td><td>".$post_date."</td><td><a href=\"".$website_url."dash/edit-post.php?pid=".$post_id."\">"._('Edit')."</a> | <a href=\"".$website_url."dash/delete-post.php?pid=".$post_id."\">"._('Delete')."</a></td>\n";
+		echo "\t\t\t\t\t\t<td><a href=\"".$website_url."posts/".$post_slug."\">".$post_title."</a></td><td class=\"w3-center\"><a href=\"".$website_url."users/".$user_name."\">".$uname."</a></td><td class=\"w3-center\">".$post_date."</td><td class=\"w3-center\"><a href=\"".$website_url."dash/edit-post.php?pid=".$post_id."\">"._('Edit')."</a> | <a href=\"".$website_url."dash/delete-post.php?pid=".$post_id."\">"._('Delete')."</a></td>\n";
 		echo "\t\t\t\t\t</tr>\n";
 	}
 } else {

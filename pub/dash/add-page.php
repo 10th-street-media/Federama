@@ -2,7 +2,7 @@
 /*
  * pub/dash/add-page.php
  *
- * Allows users to create pages.
+ * Allows users to create a page.
  *
  * since Federama version 0.1
  */
@@ -13,7 +13,23 @@ require			"../includes/database-connect.php";
 require_once	"../includes/configuration-data.php";
 require_once	"../includes/verify-cookies.php";
 
-$pagetitle = _("Add new page⋮$website_name — Ꞙederama");
+/**
+ * Form processing
+ */
+if (isset($_POST['page-submit'])) {
+
+	$title	= nicetext($_POST['page-title']);
+	$slug		= makeslug($_POST['page-title']);
+	$text		= nicetext($_POST['page-text']);
+	$now		= date("Y-m-d H:i:s");
+
+	$postq	= "INSERT INTO ".TBLPREFIX."posts (user_id, post_date, post_title, post_slug, post_text, post_status, post_type, post_modified_date, post_tags, post_categories, comment_status, ping_status) VALUES ('".$_COOKIE['id']."', '".$now."', '".$title."', '".$slug."', '".$text."', 'PUBLIC', 'PAGE', '".$now."', '', '', 'OPEN', 'OPEN')";
+	$postquery = mysqli_query($dbconn,$postq);
+	redirect($website_url."dash/pages.php");
+}
+
+
+$pagetitle = _("Add new page « $website_name « Ꞙederama");
 include "header.php";
 include "nav.php";
 ?>

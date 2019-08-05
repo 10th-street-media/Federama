@@ -2,7 +2,7 @@
 /*
  * pub/dash/add-post.php
  *
- * Allows users to create posts.
+ * Allows users to create a post.
  *
  * since Federama version 0.1
  */

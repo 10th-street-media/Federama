@@ -25,10 +25,10 @@
 				<a href="#" class="w3-bar-item w3-button" title="<?php echo _("Your profile."); ?>" onclick="myProfile()"><i class="fa fa-lg fa-user" ></i>&nbsp;<?php echo _("Profile"); ?>&nbsp;<i class="fa fa-caret-down w3-right"></i></a>
 					<div id="profileMenu" class="w3-hide w3-white w3-card">
 						<a href="<?php echo $website_url."dash/profile.php"; ?>" class="w3-bar-item w3-button"><?php echo _('View profile'); ?></a>
-						<a href="<?php echo $website_url."dash/edit-profile.php"; ?>" class="w3-bar-item w3-button"><?php echo _('Edit profile'); ?></a>
 						<a href="<?php echo $website_url."dash/import-profile.php"; ?>" class="w3-bar-item w3-button"><?php echo _('Import profile'); ?></a>
 						<a href="<?php echo $website_url."dash/export-profile.php"; ?>" class="w3-bar-item w3-button"><?php echo _('Export profile'); ?></a>
 						<a href="<?php echo $website_url."dash/delete-profile.php"; ?>" class="w3-bar-item w3-button"><?php echo _('Delete profile'); ?></a>
+						<a href="<?php echo $website_url."dash/change-passphrase.php"; ?>" class="w3-bar-item w3-button"><?php echo _('Change passphrase'); ?></a>
 					</div>
 <?php
 $adminq = "SELECT * FROM ".TBLPREFIX."users WHERE user_id=".$_COOKIE['id'];
@@ -45,7 +45,10 @@ while($adminopt = mysqli_fetch_assoc($adminquery)) {
 			echo "\t\t\t\t<a href=\"#\" class=\"w3-bar-item w3-button\" title=\""._('Administrator dashboard')."\" onclick=\"myAdminMenu()\"><i class=\"fa fa-lg fa-wrench\"></i>&nbsp;"._('Administrators')."&nbsp;<i class=\"fa fa-caret-down w3-right\"></i></a>\n";
 			echo "\t\t\t\t\t<div id=\"adminMenu\" class=\"w3-hide w3-white w3-card\">\n";
 			echo "\t\t\t\t\t\t<a href=\"".$website_url."dash/admin/configuration.php\" class=\"w3-bar-item w3-button\">"._('Website configuration')."</a>\n";
-			echo "\t\t\t\t\t\t<a href=\"#\" class=\"w3-bar-item w3-button\">"._('Some text')."</a>\n";
+			echo "\t\t\t\t\t\t<a href=\"".$website_url."dash/admin/plugins.php\" class=\"w3-bar-item w3-button\">"._('Plugins')."</a>\n";
+			echo "\t\t\t\t\t\t<a href=\"".$website_url."dash/admin/themes.php\" class=\"w3-bar-item w3-button\">"._('Themes')."</a>\n";
+			echo "\t\t\t\t\t\t<a href=\"".$website_url."dash/admin/templates.php\" class=\"w3-bar-item w3-button\">"._('Templates')."</a>\n";
+			echo "\t\t\t\t\t\t<a href=\"".$website_url."dash/admin/tools.php\" class=\"w3-bar-item w3-button\">"._('Tools')."</a>\n";
 			echo "\t\t\t\t\t</div>\n";
 		}
 
