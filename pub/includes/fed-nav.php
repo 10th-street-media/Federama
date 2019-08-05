@@ -11,12 +11,12 @@
  // get number of posts
 # this function below isn't working at the moment. Try the variables below that.
 # $postsbyqty = user_post_quantity($userid);
-$postsbyq = "SELECT * FROM posts WHERE posts_by='".$userid."'";
+$postsbyq = "SELECT * FROM ".TBLPREFIX."posts WHERE user_id='".$userid."'";
 $postsbyquery = mysqli_query($dbconn,$postsbyq);
 $postsbyqty = mysqli_num_rows($postsbyquery);
 
 // get number of followers and number of accounts being followed
-$followersq = "SELECT * FROM users where user_id='".$userid."'";
+$followersq = "SELECT * FROM ".TBLPREFIX."users where user_id='".$userid."'";
 $followersquery = mysqli_query($dbconn,$followersq);
 while ($followersopt = mysqli_fetch_assoc($followersquery)) {
 	$followersqty = count(explode(",",$followersopt['user_followers']));
@@ -35,9 +35,10 @@ while ($followersopt = mysqli_fetch_assoc($followersquery)) {
 					<p>
 					<?php echo "@".$username; ?><br>
 					<?php echo "@".$username."@".short_url($website_url); ?><br>
+					<hr>
 					<?php echo $userbio; ?><br>
+					<hr>
 					<?php echo _("Posts:")." ".$postsbyqty; ?><br>
-					<?php echo _("Friends:"); ?> ###<br>
 					<?php echo _("Followers:")." ".$followersqty; ?><br>
 					<?php echo _("Following:")." ".$followingqty; ?><br>
 					</p>

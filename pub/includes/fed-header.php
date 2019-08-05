@@ -51,6 +51,6 @@
 		echo "<a href=\"\#\">&#9776;</a>";
 ?>
 </div>
-		<div class="w3-center w3-padding w3-large"><b>Ꞙ</b></div>
+		<div class="w3-center w3-padding w3-large"><img src="<?php echo $website_url; ?>images/federama-logo-white-24.png"></div>
 	</header>
 	</div> <!-- .w3-top -->
