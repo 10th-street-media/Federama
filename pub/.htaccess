@@ -16,7 +16,7 @@ RewriteRule ^users/(.*)/atom.xml$ /users/$1-atom.xml
 # to get https://www.example.com/user/username/rss2.xml
 RewriteRule ^users/(.*)/rss2.xml$ /users/$1-rss2.xml
 
-# to get https://www.example.com/user/username/username.json
+# to get https://www.example.com/user/username.json
 RewriteRule ^users/(.*)/rss2.xml$ /users/$1.json
 
 RewriteCond %{SERVER_PORT} 80
