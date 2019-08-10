@@ -41,7 +41,11 @@ if ($get_id != '') {
 		$by_q = "SELECT * FROM ".TBLPREFIX."users WHERE user_id=\"".$postby."\"";
 		$by_query = mysqli_query($dbconn,$by_q);
 		while($by_opt = mysqli_fetch_assoc($by_query)) {
-			$byname		= $by_opt['user_name'];
+			if ($by_opt['user_display_name'] !== '') {
+				$byname		= $by_opt['user_display_name'];
+			} else {
+				$byname		= $by_opt['user_name'];
+			}
 		}
 } else if ($get_title != '') {
 	$pstq = "SELECT * FROM ".TBLPREFIX."posts WHERE post_slug=\"".$get_title."\" AND post_type='POST'";
@@ -59,7 +63,11 @@ if ($get_id != '') {
 		$by_q = "SELECT * FROM ".TBLPREFIX."users WHERE user_id=\"".$postby."\"";
 		$by_query = mysqli_query($dbconn,$by_q);
 		while($by_opt = mysqli_fetch_assoc($by_query)) {
-			$byname		= $by_opt['user_name'];
+			if ($by_opt['user_display_name'] !== '') {
+				$byname		= $by_opt['user_display_name'];
+			} else {
+				$byname		= $by_opt['user_name'];
+			}
 		}
 }
 
