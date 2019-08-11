@@ -28,7 +28,7 @@
 // create or update nodeinfo/2.0 file
 	$nodeinfo2 = fopen("nodeinfo/2.0", "w") or die("Unable to open or create nodeinfo 2.0 file");
 
-	$json2 = "{\"version\":\"2.0\",\"software\":{\"name\":\"federama\",\"version\":\"v0.2\"},\"protocols\":[\"activitypub\"],\"services\":{\"inbound\":[],\"outbound\":[\"atom1.0\",\"rss2.0\"]},\"openRegistrations\":".$open.",\"usage\":{\"users\":{\"total\":".user_quantity($users).",\"activeHalfyear\":".users_half_year($sometimes_users).",\"activeMonth\":".users_past_month($active_users)."},\"localPosts\":".post_quantity($posts).",\"localComments\":0},\"metadata\":{\"nodeName\":\"".$website_name."\"}}";
+	$json2 = "{\"version\":\"2.0\",\"software\":{\"name\":\"federama\",\"version\":\"v0.2\"},\"protocols\":[\"activitypub\"],\"services\":{\"inbound\":[],\"outbound\":[\"atom1.0\",\"rss2.0\"]},\"openRegistrations\":".$open.",\"usage\":{\"users\":{\"total\":".user_quantity($users).",\"activeHalfyear\":".users_half_year($sometimes_users).",\"activeMonth\":".users_past_month($active_users)."},\"localPosts\":".node_post_quantity($posts).",\"localComments\":0},\"metadata\":{\"nodeName\":\"".$website_name."\"}}";
 
 	fwrite($nodeinfo2,$json2);
 	fclose($nodeinfo2);

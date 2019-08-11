@@ -238,6 +238,18 @@ function users_half_year($sometimes_users) {
  	return $pageqty;
  }
 
+ // get the number of posts for nodeinfo
+ // includes total number of poasts and pages
+ function node_post_quantity($posts) {
+   $dbconn = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
+   $postqq = "SELECT * FROM ".TBLPREFIX."posts";
+   $postqquery = mysqli_query($dbconn,$postqq);
+   $postqty = mysqli_num_rows($postqquery);
+
+	return $postqty;
+}
+
+
 // Get the number of a user's posts from user_outbox in users table
 function user_post_quantity($userid) {
 	$dbconn = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
