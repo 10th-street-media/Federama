@@ -8,7 +8,7 @@
  *
  */
 
-include "../../../functions.php"; // needed to make a sitekey
+include "../../../functions.php";
 
 
 /**
@@ -53,16 +53,13 @@ if (file_exists("../../../conn.php")) {
 		$global_count++;
 	}
 
-	if (SITEKEY !== "") {
-		$global_count++;
-	}
 
 	/**
 	 *
 	 * If all of the global variables are set, redirect to config.php to see if the website is configured properly.
 	 * If some of the global variables are missing, redirect to repair.php.
 	 */
-#	if ($global_count === 5) {
+#	if ($global_count === 4) {
 		// install the basic database
 		// fill the basic database
 #		header("Location: config.php");
@@ -82,22 +79,8 @@ if (isset($_POST['startsubmit'])) {
 	$dbuser	= $_POST['dbuser'];
 	$dbpass	= $_POST['dbpass'];
 	$tblpre	= $_POST['tblprefix'];
-	$version = "Federama 0.1";
+	$version = "Federama 0.2";
 
-/**
- * Time to see if the passphrase works well
- */
-	if (isset($dbpass)) {
-
-		// Is the passphrase at least 16 characters long?
-		if (strlen($dbpass) < 16) {
-			$message = "SHORT_PASSPHRASE";
-
-		// Is the passphrase complex?
-		} else if (!preg_match("/^(?=\P{Ll}*\p{Ll})(?=\P{Lu}*\p{Lu})(?=\P{N}*\p{N})[\s\S]{8,}$/",$dbpass)) {
-			$message = "NOT_COMPLEX";
-		}
-	} // end if isset $dbpass
 
 	if (!isset($message)) {
 		/**
@@ -121,17 +104,47 @@ if (isset($_POST['startsubmit'])) {
 		$conndata .= "define(\"DBUSER\",\"".$dbuser."\");\n";
 		$conndata .= "define(\"DBPASS\",\"".$dbpass."\");\n";
 		$conndata .= "define(\"TBLPREFIX\",\"".$tblpre."\");\n";
-		$conndata .= "define(\"VERSION\",\"".$version."\");\n";
-		$conndata .= "?>";
+
 
 		// let us try to write to it.
 		fwrite($connmeta,$conndata);
 		fclose($connmeta);
 
+
+
+		/**
+		 * now create ../../nodeinfo/version.php
+		 */
+
+		$versmeta = fopen("../../nodeinfo/version.php", "x+") or die("Unable to open or create nodeinfo/version.php file");
+
+		$versdata = "<?php\n";
+		$versdata .= "/*\n";
+		$versdata .= " *\n";
+		$versdata .= " * pub/nodeinfo/version.php\n";
+		$versdata .= " *\n";
+		$versdata .= " * Provides definition of Federama version.\n";
+		$versdata .= " *\n";
+		$versdata .= " * since Federama version 0.2\n";
+		$versdata .= " *\n";
+		$versdata .= " */\n\n";
+		$versdata .= "define(\"VERSION\",\"".$version."\");\n";
+
+
+		// let us try to write to it.
+		fwrite($versmeta,$versdata);
+		fclose($versmeta);
+
+
+
+
 		#include_once "schema.php";
 		header("Location: schema.php");
 	} // end if !isset $message
 }
+
+
+
 /**
  * In the future, there will be a language chooser before we get to this point.
  */
@@ -142,16 +155,6 @@ include_once "header.php";
 ?>
 	<!-- THE CONTAINER for the main content -->
 	<main class="w3-container w3-content" style="max-width:1400px;margin-top:40px;">
-<?php
-switch ($message) {
-	case "SHORT_PASSPHRASE":
-		echo "\n<br>"._("The passphrase is too short. Please try again.");
-		break;
-	case "NOT_COMPLEX":
-		echo "\n<br>"._("The passphrase is not complex. Please try again.");
-		break;
-}
-?>
 	<!-- THE GRID -->
 		<div class="w3-cell-row w3-container">
 			<div class="w3-col w3-cell m3 l4">

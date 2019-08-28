@@ -61,9 +61,32 @@ if (isset($_POST['amosubmit'])) {
 		/**
 		 * Create our first user
 		 */
+
+		// let's create some keys
+		// from the comments on https://www.php.net/manual/en/function.openssl-pkey-new.php
+		$keyconfig = array(
+    		"digest_alg" => "sha512",
+    		"private_key_bits" => 4096,
+    		"private_key_type" => OPENSSL_KEYTYPE_RSA,
+		);
+
+		// Create the private and public key
+		$res = openssl_pkey_new($keyconfig);
+
+		// Extract the private key from $res to $privkey
+		openssl_pkey_export($res, $privkey);
+
+		// write the private key to a file outside the web root
+		$privmeta = fopen("../../../keys/".$amouser."-private.pem", "w") or die("Unable to open or create ../../keys/".$amouser."-private.pem file");
+		fwrite($privmeta,$privkey);
+
+		// Extract the public key from $res to $pubkey
+		$pubkey = openssl_pkey_get_details($res);
+		$pubkey = $pubkey["key"];
+
 		$uid				= makeid($newid);
 		$udatecreate	= date('Y-m-d H:i:s');
-		$firstuserq		= "INSERT INTO ".TBLPREFIX."users (user_id, user_name, user_pass, user_level, user_actor_type, user_created, user_last_login) VALUES ('".$uid."', '".$amouser."', '".$hash_pass."', 'ADMINISTRATOR', 'PERSON', '".$udatecreate."', '".$udatecreate."')";
+		$firstuserq		= "INSERT INTO ".TBLPREFIX."users (user_id, user_name, user_pass, user_level, user_actor_type, user_pub_key, user_created, user_last_login) VALUES ('".$uid."', '".$amouser."', '".$hash_pass."', 'ADMINISTRATOR', 'PERSON', '".$pubkey."', '".$udatecreate."', '".$udatecreate."')";
 		$firstadminq	= "UPDATE ".TBLPREFIX."configuration SET website_name='".$amosite."', website_url='".$amositeurl."', admin_account='".$amouser."'";
 
 		$message = $firstuserq."<br>\n\n".$firstadminq;
