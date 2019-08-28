@@ -26,9 +26,7 @@ include "nav.php";
 					<div class="w3-theme-l3 w3-padding">
 						<h4><?php echo _("Followers"); ?></h4>
 						<hr>
-						<a href="https://example.social/users/root">@root@example.social</a><br>
-						<a href="https://peertube.tld/user">@user@peertube.tld</a><br>
-						<a href="https://pleroma.duderino/arduino">@arduino@pleroma.duderino</a><br>
+
 					</div>
 				</section>
 
@@ -36,9 +34,7 @@ include "nav.php";
 					<div class="w3-theme-l3 w3-padding">
 						<h4><?php echo _("Following"); ?></h4>
 						<hr>
-						<a href="https://example.social/users/root">@root@example.social</a><br>
-						<a href="https://peertube.tld/user">@user@peertube.tld</a><br>
-						<a href="https://pleroma.duderino/arduino">@arduino@pleroma.duderino</a><br>
+
 					</div>
 				</section>
 
@@ -46,9 +42,16 @@ include "nav.php";
 					<div class="w3-theme-l3 w3-padding">
 						<h4><?php echo _("Recommended"); ?></h4>
 						<hr>
-						<a href="https://example.social/users/celebrity">@celebrity@example.social</a><br>
-						<a href="https://tomato.tomato/users/famous">@famous@tomato.tomato</a><br>
-						<a href="https://secret.lair/dragon">@dragon@secret.lair</a><br>
+<?php
+/**
+ * Let's recommend a random list of users on this instance
+ */
+$recommendedq = "SELECT * FROM ".TBLPREFIX."users ORDER BY RAND() LIMIT 25";
+$recommendedquery = mysqli_query($dbconn,$recommendedq);
+while ($recommopt = mysqli_fetch_assoc($recommendedquery)) {
+	echo "\t\t\t\t\t\t\t<a href=\"".$website_url."users/".$recommopt['user_name']."\">@".$recommopt['user_name']."@".$_SERVER['SERVER_NAME']."</a><br>";
+}
+?>
 					</div>
 				</section>
 			</article> <!-- end article (It's not really an article, but it serves the same purpose.) -->

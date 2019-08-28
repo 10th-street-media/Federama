@@ -1,2 +1,0 @@
-AddType application/json;qs=0.5 .json
-Header set Access-Control-Allow-Origin "*"
