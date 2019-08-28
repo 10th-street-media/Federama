@@ -25,6 +25,8 @@ if (isset($_COOKIE['PHPSESSID'])) {
 		$u_dob		= $uidopt['user_date_of_birth'];
 		$u_level		= $uidopt['user_level'];
 		$u_type		= $uidopt['user_actor_type'];
+		$u_prvkey	= $uidopt['user_priv_key'];
+		$u_pubkey	= $uidopt['user_pub_key'];
 		$u_avatar	= $uidopt['user_avatar'];
 		$u_locale	= $uidopt['user_locale'];
 		$u_location	= $uidopt['user_location'];
@@ -49,6 +51,8 @@ if (isset($_COOKIE['PHPSESSID'])) {
 		$u_dob		= $uidopt['user_date_of_birth'];
 		$u_level		= $uidopt['user_level'];
 		$u_type		= $uidopt['user_actor_type'];
+		$u_prvkey	= $uidopt['user_priv_key'];
+		$u_pubkey	= $uidopt['user_pub_key'];
 		$u_avatar	= $uidopt['user_avatar'];
 		$u_locale	= $uidopt['user_locale'];
 		$u_location	= $uidopt['user_location'];
@@ -73,6 +77,8 @@ if (isset($_COOKIE['PHPSESSID'])) {
 		$u_dob		= $uidopt['user_date_of_birth'];
 		$u_level		= $uidopt['user_level'];
 		$u_type		= $uidopt['user_actor_type'];
+		$u_prvkey	= $uidopt['user_priv_key'];
+		$u_pubkey	= $uidopt['user_pub_key'];
 		$u_avatar	= $uidopt['user_avatar'];
 		$u_locale	= $uidopt['user_locale'];
 		$u_location	= $uidopt['user_location'];

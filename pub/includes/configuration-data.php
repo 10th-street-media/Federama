@@ -29,10 +29,4 @@ while ($mysiteopt = mysqli_fetch_assoc($mysitequery)) {
 }
 
 $theme_path = $website_url."themes/".$active_theme;
-
-if ($open_registration === 1) {
-	$open = "true";
-} else {
-	$open = "false";
-}
 ?>

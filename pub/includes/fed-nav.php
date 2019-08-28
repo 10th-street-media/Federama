@@ -41,6 +41,8 @@ while ($followersopt = mysqli_fetch_assoc($followersquery)) {
 					<?php echo _("Posts:")." ".$postsbyqty; ?><br>
 					<?php echo _("Followers:")." ".$followersqty; ?><br>
 					<?php echo _("Following:")." ".$followingqty; ?><br>
+					<hr>
+					<a href="#" class="w3-bar-item w3-button" title="<?php echo _('Follow '.$username); ?>"><i class="fa fa-lg fa-check"></i>&nbsp;<?php echo _("Follow"); ?></a>
 					</p>
 					<ul>
 						<li><a href="#" title="<?php echo _("Home will show all of the user's posts."); ?>"><?php echo _("Home"); ?></a></li>
