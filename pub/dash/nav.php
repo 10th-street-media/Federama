@@ -18,8 +18,21 @@
 				<a href="<?php echo $website_url."dash/index.php"; ?>" class="w3-bar-item w3-button" title="<?php echo _("Your homepage"); ?>"><i class="fa fa-lg fa-home"></i>&nbsp;<?php echo _("Home"); ?></a>
 				<a href="<?php echo $website_url."dash/posts.php"; ?>" class="w3-bar-item w3-button" title="<?php echo _("Posts on this instance."); ?>"><i class="fa fa-lg fa-pencil"></i>&nbsp;<?php echo _("Posts"); ?></a>
 				<a href="<?php echo $website_url."dash/pages.php"; ?>" class="w3-bar-item w3-button" title="<?php echo _("Pages are posts that exist outside the timeline."); ?>"><i class="fa fa-lg fa-file-text"></i>&nbsp;<?php echo _("Pages"); ?></a>
-				<a href="<?php echo $website_url."dash/messages.php"; ?>" class="w3-bar-item w3-button" title="<?php echo _("Your inbox and outbox."); ?>"><i class="fa fa-lg fa-commenting"></i>&nbsp;<?php echo _("Messages"); ?></a>
-				<a href="<?php echo $website_url."dash/contacts.php"; ?>" class="w3-bar-item w3-button" title="<?php echo _("Your contact lists."); ?>"><i class="fa fa-lg fa-address-book"></i>&nbsp;<?php echo _("Contacts"); ?></a>
+				<a href="#" class="w3-bar-item w3-button" title="<?php echo _("Your inbox and outbox."); ?>" onclick="myMessages()"><i class="fa fa-lg fa-commenting"></i>&nbsp;<?php echo _("Messages"); ?>&nbsp;<i class="fa fa-caret-down w3-right"></i></a>
+					<div id="messageMenu" class="w3-hide w3-white w3-card">
+						<a href="<?php echo $website_url."dash/messages.php"; ?>" class="w3-bar-item w3-button"><?php echo _('Messages Home'); ?></a>
+						<a href="<?php echo $website_url."dash/add-message.php"; ?>" class="w3-bar-item w3-button"><?php echo _('Add a message'); ?></a>
+						<a href="<?php echo $website_url."dash/inbox.php"; ?>" class="w3-bar-item w3-button"><?php echo _('Inbox'); ?></a>
+						<a href="<?php echo $website_url."dash/local-timeline.php"; ?>" class="w3-bar-item w3-button"><?php echo _('Local timeline'); ?></a>
+						<a href="<?php echo $website_url."dash/fed-timeline.php"; ?>" class="w3-bar-item w3-button"><?php echo _('Federated timeline'); ?></a>
+					</div>
+				<a href="#" class="w3-bar-item w3-button" title="<?php echo _("Your contact lists."); ?>" onclick="myContacts()"><i class="fa fa-lg fa-address-book"></i>&nbsp;<?php echo _("Contacts"); ?>&nbsp;<i class="fa fa-caret-down w3-right"></i></a>
+					<div id="contactsMenu" class="w3-hide w3-white w3-card">
+						<a href="<?php echo $website_url."dash/friends.php"; ?>" class="w3-bar-item w3-button"><?php echo _('Friends'); ?></a>
+						<a href="<?php echo $website_url."dash/followers.php"; ?>" class="w3-bar-item w3-button"><?php echo _('Followers'); ?></a>
+						<a href="<?php echo $website_url."dash/following.php"; ?>" class="w3-bar-item w3-button"><?php echo _('Following'); ?></a>
+						<a href="<?php echo $website_url."dash/local-users.php"; ?>" class="w3-bar-item w3-button"><?php echo _('Local users'); ?></a>
+					</div>
 				<a href="<?php echo $website_url."dash/bookmarks.php"; ?>" class="w3-bar-item w3-button" title="<?php echo _("Items you've liked or disliked."); ?>"><i class="fa fa-lg fa-bookmark"></i>&nbsp;<?php echo _("Noteworthy"); ?></a>
 				<a href="<?php echo $website_url."dash/media.php"; ?>" class="w3-bar-item w3-button" title="<?php echo _("Images, audio, and video on this instance."); ?>"><i class="fa fa-lg fa-file-image-o"></i>&nbsp;<?php echo _("Media"); ?></a>
 				<a href="#" class="w3-bar-item w3-button" title="<?php echo _("Your profile."); ?>" onclick="myProfile()"><i class="fa fa-lg fa-user" ></i>&nbsp;<?php echo _("Profile"); ?>&nbsp;<i class="fa fa-caret-down w3-right"></i></a>
@@ -69,6 +82,30 @@ while($adminopt = mysqli_fetch_assoc($adminquery)) {
 ?>
 			</nav>
 			<script>
+			function myMessages() {
+			  var x = document.getElementById("messageMenu");
+			  if (x.className.indexOf("w3-show") == -1) {
+			    x.className += " w3-show";
+			    x.previousElementSibling.className += " w3-theme-d1";
+			  } else {
+			    x.className = x.className.replace(" w3-show", "");
+			    x.previousElementSibling.className =
+			    x.previousElementSibling.className.replace(" w3-theme-d1", "");
+			  }
+			}
+
+			function myContacts() {
+			  var x = document.getElementById("contactsMenu");
+			  if (x.className.indexOf("w3-show") == -1) {
+			    x.className += " w3-show";
+			    x.previousElementSibling.className += " w3-theme-d1";
+			  } else {
+			    x.className = x.className.replace(" w3-show", "");
+			    x.previousElementSibling.className =
+			    x.previousElementSibling.className.replace(" w3-theme-d1", "");
+			  }
+			}
+
 			function myProfile() {
 			  var x = document.getElementById("profileMenu");
 			  if (x.className.indexOf("w3-show") == -1) {

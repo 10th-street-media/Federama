@@ -23,7 +23,7 @@ include "nav.php";
 
 				<h2 class="w3-padding"><?php echo _("Pages"); ?></h2>
 
-				<a href="add-page.php" class="w3-button w3-theme-dark w3-margin-left"><?php echo _("ADD NEW PAGE"); ?></a>
+				<a href="add-page.php" class="w3-button w3-theme-dark w3-margin-left"><?php echo _("ADD NEW PAGE"); ?></a><br><br>
 
 				<table class="w3-table-all w3-hoverable w3-margin-left">
 					<tr class="w3-theme-dark">

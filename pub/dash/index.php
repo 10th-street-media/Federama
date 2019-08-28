@@ -33,6 +33,7 @@ include "nav.php";
 						<hr>
 						<span><?php echo _("Number of users: ").user_quantity($user); ?></span><br>
 						<span><?php echo _("Number of posts: ").post_quantity($post); ?></span><br>
+						<span><?php echo _("Number of messages: ").message_quantity($message); ?></span><br>
 						<span><?php echo "<b>".$website_name."</b>".(" is running ").VERSION; ?></span>
 					</div>
 				</section>
@@ -71,6 +72,16 @@ if (mysqli_num_rows($dashpostsquery) > 0) {
 					</div>
 				</section>
 
+				<section class="w3-half w3-container">
+					<div class="w3-theme-l3 w3-padding w3-margin-top">
+					<h4><?php echo _("Future sections"); ?></h4>
+					<hr>
+					<ul>
+						<li><?php echo _("About <code>website_name</code>"); ?></li>
+						<li><?php echo _("Recently joined users"); ?></li>
+					</ul>
+					</div>
+				</section>
 			</article> <!-- end article (It's not really an article, but it serves the same purpose.) -->
 
 <?php

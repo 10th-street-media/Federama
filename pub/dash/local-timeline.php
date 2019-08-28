@@ -1,10 +1,10 @@
 <?php
 /*
- * pub/dash/messages.php
+ * pub/dash/local-timeline.php
  *
- * A page with a user's ActivityPub inbox and outbox.
+ * A page with all public messages on this instance.
  *
- * since Federama version 0.1
+ * since Federama version 0.2
  */
 
 include_once	"../../conn.php";
@@ -13,16 +13,15 @@ require			"../includes/database-connect.php";
 require_once	"../includes/configuration-data.php";
 require_once	"../includes/verify-cookies.php";
 
-$pagetitle = _("Messages Home « $u_name « Ꞙederama");
+$pagetitle = _("Local timeline « $u_name « Ꞙederama");
 include "header.php";
 include "nav.php";
 ?>
 
 			<article class="w3-content w3-padding">
 
-				<h2 class="w3-padding"><?php echo _("Messages Home"); ?></h2>
+				<h2 class="w3-padding"><?php echo _("Local timeline"); ?></h2>
 
-				<a href="add-message.php" class="w3-button w3-theme-dark w3-margin-left"><?php echo _("ADD NEW MESSAGE"); ?></a><br><br>
 <?php
 /**
  * In the future, this should pay attention to whether the message is public,
@@ -32,11 +31,11 @@ include "nav.php";
  */
 
 
- /**
+/**
  * Putting this here temporarily
  */
  echo "\t\t\t\t<section class=\"w3-indigo w3-padding w3-margin-left w3-margin-bottom\">\n";
- echo "\t\t\t\t<p><b>Messages Home</b> will contain messages sent to the user (including DMs), as well as all public messages from the accounts they follow.</p>\n";
+ echo "\t\t\t\t<p>The <b>local timeline</b> will contain all public messages created by all public accounts on this instance.</p>\n";
  echo "\t\t\t\t</section>\n";
 
 
@@ -48,7 +47,6 @@ $msgquery = mysqli_query($dbconn,$msgq);
 if (mysqli_num_rows($msgquery) > 0) {
 	while ($msgopt = mysqli_fetch_assoc($msgquery)) {
 		$msgid		= $msgopt['message_id'];
-		$msgurl		= $msgopt['message_url'];
 		$msgby		= $msgopt['user_name']; // this is their user name
 		$msgtime		= $msgopt['message_time'];
 		$msgtxt		= $msgopt['message_text'];
@@ -113,7 +111,7 @@ if (mysqli_num_rows($msgquery) > 0) {
 
 		echo "\t\t\t\t<section class=\"w3-theme-l3 w3-padding w3-margin-left w3-margin-bottom\">\n";
 		echo "\t\t\t\t\t<span><a href=\"".$website_url."users/".$uname."\">".$author."</a>&nbsp;";
-		echo "<a href=\"".$msgurl."\">".$msgtime."</a></span>\n";
+		echo "<a href=\"".$website_url."messages/".$msgid."\">".$msgtime."</a></span>\n";
 		echo "\t\t\t\t\t<p>".$msgtxt."</p>\n";
 		echo "\t\t\t\t\t<a href=\"".$website_url."dash/messages.php?uid=".$msgby."&mid=".$msgid."&type=like\" title=\""._('Like')."\"><i class=\"fa fa-smile-o\" aria-hidden=\"true\"></i></a> ".$likes."&nbsp;&nbsp;\n";
 		echo "\t\t\t\t\t<a href=\"".$website_url."dash/messages.php?uid=".$msgby."&mid=".$msgid."&type=dislike\" title=\""._('Dislike')."\"><i class=\"fa fa-frown-o\" aria-hidden=\"true\"></i></a> ".$dlikes."&nbsp;&nbsp;\n";

@@ -40,9 +40,12 @@
 	<header class="w3-container w3-bar w3-large w3-theme-d1">
 		<div class="w3-left w3-padding"><?php echo $website_name; ?></div>
 		<div class="w3-right w3-padding"><?php
-if ($u_dname !== "") {
+if ($u_dname != "") {
 	echo _("Hello, <a href=\"".$website_url."dash/profile.php\">$u_dname</a>");
 } else {
+	if ($u_name == "") {
+		$u_name = $_COOKIE['uname'];
+	}
 	echo _("Hello, <a href=\"".$website_url."dash/profile.php\">$u_name</a>");
 }
 ?></div>

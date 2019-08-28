@@ -26,12 +26,44 @@ if(isset($_POST['profsubmit'])) {
 	$userdname		= nicetext($_POST['user-dname']);
 	$useremail		= $_POST['user-email'];
 	$userdob			= $_POST['user-dob'];
+	$userprvkey		= $_POST['user-prv-key'];
+	$userpubkey		= $_POST['user-pub-key'];
 	$userlocale		= $_POST['user-l10n'];
 	$userlocation	= $_POST['user-loc'];
 	$usertzone		= $_POST['user-tzone'];
 	$userbio			= nicetext($_POST['user-bio']);
 
-	$userupdq = "UPDATE ".TBLPREFIX."users SET user_display_name='".$userdname."', user_email='".$useremail."', user_date_of_birth='".$userdob."', user_locale='".$userlocale."', user_location='".$userlocation."', user_time_zone='".$usertzone."', user_bio='".$userbio."' WHERE user_name='".$username."'";
+	/**
+	 * If we don't have public or private keys, let's make some
+	 * The private key gets written to ../../keys/username-private.pem
+	 * The public key gets written to the database
+	 */
+	if ($userprvkey == "") {
+		// from the comments on https://www.php.net/manual/en/function.openssl-pkey-new.php
+		$keyconfig = array(
+    		"digest_alg" => "sha512",
+    		"private_key_bits" => 4096,
+    		"private_key_type" => OPENSSL_KEYTYPE_RSA,
+		);
+
+		// Create the private and public key
+		$res = openssl_pkey_new($keyconfig);
+
+		// Extract the private key from $res to $privkey
+		openssl_pkey_export($res, $privkey);
+
+		// write the private key to a file outside the web root
+		$privmeta = fopen("../../keys/".$username."-private.pem", "w") or die("Unable to open or create ../../keys/".$username."-private.pem file");
+		fwrite($privmeta,$privkey);
+
+		// Extract the public key from $res to $pubkey
+		$pubkey = openssl_pkey_get_details($res);
+		$pubkey = $pubkey["key"];
+
+
+	}
+
+	$userupdq = "UPDATE ".TBLPREFIX."users SET user_display_name='".$userdname."', user_email='".$useremail."', user_date_of_birth='".$userdob."', user_pub_key='".$pubkey."', user_locale='".$userlocale."', user_location='".$userlocation."', user_time_zone='".$usertzone."', user_bio='".$userbio."' WHERE user_name='".$username."'";
 	$userupdquery = mysqli_query($dbconn,$userupdq);
 
 	/* reload the page by redirecting to itself */
@@ -40,6 +72,9 @@ if(isset($_POST['profsubmit'])) {
 } /* end if isset $_POST['profsubmit'] */
 /**  END FORM PROCESSING  ****************************************************/
 
+if ($u_name == "") {
+	$u_name = $_COOKIE['uname'];
+}
 $pagetitle = _("Profile « $website_name « Ꞙederama");
 include "header.php";
 include "nav.php";
@@ -51,6 +86,8 @@ include "nav.php";
 
 				<form method="POST" action="<?php echo htmlspecialchars($website_url."dash/profile.php"); ?>">
 					<!-- <input type="hidden" value="<?php echo $u_id?>"> -->
+					<input type="hidden" name="user-prv-key" id="user-prv-key" value="<?php echo $u_prvkey?>">
+					<input type="hidden" name="user-pub-key" id="user-pub-key" value="<?php echo $u_pubkey?>">
 					<table class="w3-table w3-margin-left">
 
 						<tr>
