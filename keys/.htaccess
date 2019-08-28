@@ -1,0 +1,2 @@
+# Extra precaution to keep people/bots/crawlers out of here
+Header set X-Robots-Tag "noindex, nofollow"

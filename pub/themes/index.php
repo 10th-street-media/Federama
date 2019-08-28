@@ -3,7 +3,7 @@
  *
  * pub/themes/index.php
  *
- * People shouldn't normally be in here, so they are redirected if the try to navigate here.
+ * People shouldn't normally be in here, so they are redirected if they try to navigate here.
  *
  */
 ?>
@@ -11,7 +11,7 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<title>Federama 0.1</title>
+<title>Federama 0.2</title>
 <meta http-equiv="refresh" content="1 URL='../index.php'" />
 </head>
 <body>
