@@ -137,7 +137,7 @@ if (mysqli_num_rows($getpostsquery) > 0) {
 		echo "\t\t\t\t<h2 class=\"w3-text-theme w3-container w3-bar\"><a href=\"".$website_url."posts/".$post_slug."\">".$post_title."</a></h2>\n";
 		echo "\t\t\t\t<span class=\"w3-container w3-block\">"._('Posted on ').$post_date._(' by ')."<a href=\"".$website_url."users/".$user_name."\">".$uname."</a></span><br>\n";
 		echo "\t\t\t\t<div class=\"w3-container w3-block\">\n";
-		echo htmlspecialchars_decode($post_text);
+		echo htmlspecialchars_decode($post_text)."<br>\n";
 		echo "\t\t\t\t</div>\n";
 		echo "\t\t\t</article>\n";
 	}

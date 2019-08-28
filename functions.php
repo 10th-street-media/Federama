@@ -10,11 +10,38 @@
 
 include "conn.php";
 
+
 // put this here for various functions to use
 $dbconn = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
 mysqli_set_charset($dbconn, "utf8");
 
-$metadescription = _("<i>Federama</i> is an open-source PHP framework and microblogging software for the Fediverse - a decentralized social network of thousands of different communities and millions of users.");
+$metadescription = _("<i>Federama</i> is an open-source PHP framework and blogging software for the Fediverse - a decentralized social network of thousands of different communities and millions of users.");
+
+$mysiteq = "SELECT * FROM ".TBLPREFIX."configuration";
+$mysitequery = mysqli_query($dbconn,$mysiteq);
+while ($mysiteopt = mysqli_fetch_assoc($mysitequery)) {
+	$website_url                     = $mysiteopt['website_url'];
+	$website_name                    = $mysiteopt['website_name'];
+	$website_description             = $mysiteopt['website_description'];
+	$default_locale                  = $mysiteopt['default_locale'];
+	$open_registration               = $mysiteopt['open_registrations'];
+	$admin_account                   = $mysiteopt['admin_account'];
+   $admin_email                     = $mysiteopt['admin_email'];
+   $installed_themes                = $mysiteopt['installed_themes'];
+   $active_theme                    = $mysiteopt['active_theme'];
+   $blocked_instances               = $mysiteopt['blocked_instances'];
+   $list_with_the_federation_info   = $mysiteopt['list_with_the_federation_info'];
+   $list_with_fediverse_network     = $mysiteopt['list_with_fediverse_network'];
+   $list_with_federama_social       = $mysiteopt['list_with_federama_social'];
+}
+
+/**
+ *
+ * TIME AND DATE FUNCTIONS
+ */
+
+
+
 
 // creates a 20 character ID
 function makeid($newid) {
@@ -46,7 +73,9 @@ function nicetext($text) {
 	$text = stripslashes($text);
 
 	// converts special characters (i.e. < > &, etc) into their html entities
-	$text = htmlspecialchars($text,ENT_QUOTES,'UTF-8',true);
+	#$text = htmlspecialchars($text,ENT_QUOTES,'UTF-8',true);
+
+	$text = preg_replace('/\'/i', '&apos;', $text);
 	return $text;
 }
 
@@ -75,27 +104,12 @@ function makeslug($text) {
 }
 
 // finds @usernames and turns them into links
-function userparser($text) {
+function profileparser($text) {
 
-	/**
-	 *	Look for @user@instance.tld
-	 * See if instance.tld has an account named 'user'
-	 * If yes, create a link
-	 * Else leave as plain text
-	 */
+	// link will be something like <a href='http://example.tld/users/username'>@username</a>
+	$newtext = preg_replace('/(@([a-zA-Z0-9]+))/i', '<a href=\''.$website_url.'users/\2\'>\1</a>',$text);
+	return $newtext;
 
-
-	/**
-	 * Look for @user with a space after their name
-	 * Check against list of users on this instance
-	 * If user exists, create a link
-	 * Else leave as plain text
-	 *
-	 * Let us stick with basic letters, numbers, and underscores
-	 */
-	if($textuser = preg_match_all('/@{1}[a-zA-Z0-9_]+\s+/i',$text)) {
-
-	}
 }
 
 // displays a warning message on a page
@@ -238,15 +252,15 @@ function users_half_year($sometimes_users) {
  	return $pageqty;
  }
 
- // get the number of posts for nodeinfo
- // includes total number of poasts and pages
- function node_post_quantity($posts) {
-   $dbconn = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
-   $postqq = "SELECT * FROM ".TBLPREFIX."posts";
-   $postqquery = mysqli_query($dbconn,$postqq);
-   $postqty = mysqli_num_rows($postqquery);
 
-	return $postqty;
+// get the number of messages for the Dashboard
+function message_quantity($messages) {
+	$dbconn = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
+	$messqq = "SELECT * FROM ".TBLPREFIX."messages";
+	$messqquery = mysqli_query($dbconn,$messqq);
+	$messqty = mysqli_num_rows($messqquery);
+
+	return $messqty;
 }
 
 

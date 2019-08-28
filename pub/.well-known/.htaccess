@@ -4,13 +4,3 @@
 	Header set Accept application/json
 	Header set Content-Type application/json
 </Files>
-
-
-# Re-write rules for webfinger
-RewriteEngine On
-
-RewriteCond %{REQUEST_URI}  /\.well-known/webfinger$
-RewriteCond %{QUERY_STRING} resource=([^&]+)
-RewriteRule ^(.*)$ /data/%1.json [L]
-
-RewriteRule ^/.well-known/webfinger$ - [L,R=400]

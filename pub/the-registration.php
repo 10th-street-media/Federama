@@ -95,8 +95,32 @@ if($open_registration == FALSE) {
  * If we made it this far, create an ID, start a session, set cookies, etc.
  */
 	if (!isset($message)) {
+
+		// let's create some keys
+		// from the comments on https://www.php.net/manual/en/function.openssl-pkey-new.php
+		$keyconfig = array(
+    		"digest_alg" => "sha512",
+    		"private_key_bits" => 4096,
+    		"private_key_type" => OPENSSL_KEYTYPE_RSA,
+		);
+
+		// Create the private and public key
+		$res = openssl_pkey_new($keyconfig);
+
+		// Extract the private key from $res to $privkey
+		openssl_pkey_export($res, $privkey);
+
+		// write the private key to a file outside the web root
+		$privmeta = fopen("../keys/".$regname."-private.pem", "w") or die("Unable to open or create ../keys/".$regname."-private.pem file");
+		fwrite($privmeta,$privkey);
+
+		// Extract the public key from $res to $pubkey
+		$pubkey = openssl_pkey_get_details($res);
+		$pubkey = $pubkey["key"];
+
+
 		$udatecreate	= date('Y-m-d H:i:s');
-		$newq1			= "INSERT INTO ".TBLPREFIX."users (user_name, user_pass, user_date_of_birth, user_created, user_last_login) VALUES ('$regname', '$hash_pass', '$regdob', '$udatecreate', '$udatecreate')";
+		$newq1			= "INSERT INTO ".TBLPREFIX."users (user_name, user_pass, user_date_of_birth, user_pub_key, user_created, user_last_login) VALUES ('$regname', '$hash_pass', '$regdob', '$pubkey', '$udatecreate', '$udatecreate')";
 		$newquery1		= mysqli_query($dbconn,$newq1);
 		session_start();
 		setcookie("uname",$regname,0);

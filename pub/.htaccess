@@ -3,25 +3,21 @@ RewriteEngine On
 RewriteBase /
 
 # to get https://www.example.com/users/username
-#RewriteRule ^users/(.*)/$ /the-user.php?name=$1
-RewriteRule ^users/(.*)$ /the-user.php?name=$1
+RewriteRule ^users/(.*)/$ /the-user.php?name=$1
+#RewriteRule ^users/(.*)$ /the-user.php?name=$1
 
-# to get https://www.example.com/posts/XXXXXXX
-#RewriteRule ^posts/(.*)/$ /the-post.php?pid=$1
+# to get https://www.example.com/posts/XXXXXXXX
+RewriteRule ^posts/(.*)/$ /the-post.php?pid=$1
 #RewriteRule ^posts/(.*)$ /the-post.php?pid=$1
 
-# to get https://www.example.com/posts/post-title
-#RewriteRule ^posts/(.*)/$ /the-post.php?title=$1
-RewriteRule ^posts/(.*)$ /the-post.php?title=$1
+# to get https://www.example.com/user/username/atom.xml
+RewriteRule ^users/(.*)/atom.xml$ /users/$1-atom.xml
 
-# to get https://www.example.com/data/username/atom.xml
-RewriteRule ^data/(.*)/atom.xml$ /data/$1-atom.xml
+# to get https://www.example.com/user/username/rss2.xml
+RewriteRule ^users/(.*)/rss2.xml$ /users/$1-rss2.xml
 
-# to get https://www.example.com/data/username/rss2.xml
-RewriteRule ^data/(.*)/rss2.xml$ /data/$1-rss2.xml
-
-# to get https://www.example.com/data/username.json
-RewriteRule ^data/(.*)/(.*).json$ /data/$1.json
+# to get https://www.example.com/user/username.json
+RewriteRule ^users/(.*)/rss2.xml$ /users/$1.json
 
 RewriteCond %{SERVER_PORT} 80
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]

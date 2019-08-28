@@ -26,7 +26,7 @@ if (isset($_GET["pid"])) {
 
 if ($get_id != '') {
 
-	$pstq = "SELECT * FROM ".TBLPREFIX."posts WHERE post_id=\"".$get_id."\"";
+	$pstq = "SELECT * FROM ".TBLPREFIX."posts WHERE post_id=\"".$get_id."\" AND post_type='PAGE'";
 	$pstquery = mysqli_query($dbconn,$pstq);
 	while($pst_opt = mysqli_fetch_assoc($pstquery)) {
 		$postid		= $pst_opt['post_id'];
@@ -41,17 +41,10 @@ if ($get_id != '') {
 		$by_q = "SELECT * FROM ".TBLPREFIX."users WHERE user_id=\"".$postby."\"";
 		$by_query = mysqli_query($dbconn,$by_q);
 		while($by_opt = mysqli_fetch_assoc($by_query)) {
-			$byname	= $by_opt['user_name'];
-			$bydname	= $by_opt['user_display_name'];
-
-			if ($by_opt['user_display_name'] !== '') {
-				$byline		= $by_opt['user_display_name'];
-			} else {
-				$byline		= $by_opt['user_name'];
-			}
+			$byname		= $by_opt['user_name'];
 		}
 } else if ($get_title != '') {
-	$pstq = "SELECT * FROM ".TBLPREFIX."posts WHERE post_slug=\"".$get_title."\"";
+	$pstq = "SELECT * FROM ".TBLPREFIX."posts WHERE post_slug=\"".$get_title."\" AND post_type='PAGE'";
 	$pstquery = mysqli_query($dbconn,$pstq);
 	while($pst_opt = mysqli_fetch_assoc($pstquery)) {
 		$postid		= $pst_opt['post_id'];
@@ -66,14 +59,7 @@ if ($get_id != '') {
 		$by_q = "SELECT * FROM ".TBLPREFIX."users WHERE user_id=\"".$postby."\"";
 		$by_query = mysqli_query($dbconn,$by_q);
 		while($by_opt = mysqli_fetch_assoc($by_query)) {
-			$byname	= $by_opt['user_name'];
-			$bydname	= $by_opt['user_display_name'];
-
-			if ($by_opt['user_display_name'] !== '') {
-				$byline		= $by_opt['user_display_name'];
-			} else {
-				$byline		= $by_opt['user_name'];
-			}
+			$byname		= $by_opt['user_name'];
 		}
 }
 
@@ -91,7 +77,7 @@ include_once "includes/fed-header.php";
 <?php
 		echo "\t\t\t<article class=\"w3-content w3-padding\">\n";
 		echo "\t\t\t\t<h2 class=\"w3-text-theme w3-container w3-bar\">".$posttitle."</h2>\n";
-		echo "\t\t\t\t<span class=\"w3-container w3-block\">"._('Posted on ').$posttime._(' by ')."<a href=\"".$website_url."users/".$byname."/\">".$byline."</a></span><br>\n";
+		echo "\t\t\t\t<span class=\"w3-container w3-block\">"._('Posted on ').$posttime._(' by ')."<a href=\"".$website_url."users/".$postby."/\">".$byname."</a></span><br>\n";
 		echo "\t\t\t\t<div class=\"w3-container w3-block\">\n";
 		echo htmlspecialchars_decode($posttext);
 		echo "\t\t\t\t</div>\n";
