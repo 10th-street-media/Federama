@@ -1,4 +1,22 @@
-/** * * Theme Name: Federama 2019 Brown * Theme URI: https://federama.social/themes/federama-2019-brown * Author: Michael Hawkes,  10th Street Media LLC * Author URI: https://10thstreet.media * Description: This is a theme test. * Version: 0.1 * License: * License URI: * Text Domain: *//** * Created using the W3.CSS Color Generator * https://www.w3s chools.com/w3css/w3css_color_generator.asp */.w3-theme-l5 {
+/**
+ *
+ * Theme Name: Federama 2019 Brown
+ * Theme URI: https://federama.social/themes/federama-2019-brown
+ * Author: Michael Hawkes,  10th Street Media LLC
+ * Author URI: https://10thstreet.media
+ * Description: This is a theme test.
+ * Version: 0.1
+ * License:
+ * License URI:
+ * Text Domain:
+ */
+
+/**
+ * Created using the W3.CSS Color Generator
+ * https://www.w3s chools.com/w3css/w3css_color_generator.asp
+ */
+
+w3-theme-l5 {
 	color: #000 !important;
 	 background-color: #fff5e8 !important
 }
