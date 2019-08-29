@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
-<title>Test blue theme</title>
+<title>Federama 2019 Theme Test</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="themes/federama-2019-blue/style.css">
 <body>
 
 <div class="w3-card-4">
 <div class="w3-container w3-theme w3-card">
-  <h1>Blue</h1>
+  <h1>Federama</h1>
 </div>
 
 <div class="w3-container w3-text-theme">
