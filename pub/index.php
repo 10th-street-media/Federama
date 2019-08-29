@@ -72,6 +72,7 @@
 include			"../functions.php";
 require			"includes/database-connect.php";
 require_once	"includes/configuration-data.php";
+include_once	"nodeinfo/version.php";
 
 // see if a session is set. If so, redirect them to their dashboard.
 

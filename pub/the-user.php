@@ -11,14 +11,8 @@ include_once	"../conn.php";
 include			"../functions.php";
 require			"includes/database-connect.php";
 require_once	"includes/configuration-data.php";
+include_once	"nodeinfo/version.php";
 
-
-// get the ID for the user whose page this is
-#if (isset($_GET["uid"])) {
-#	$sel_id = $_GET["uid"];
-#} else {
-#	$sel_id = "";
-#}
 
 // get the user info
 if (isset($_GET["name"])) {

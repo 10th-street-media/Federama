@@ -11,6 +11,7 @@ include_once	"../conn.php";
 include			"../functions.php";
 require			"includes/database-connect.php";
 require_once	"includes/configuration-data.php";
+include_once	"nodeinfo/version.php";
 
 if (isset($_COOKIE['id'])) {
 	redirect($website_url."dash/index.php");
