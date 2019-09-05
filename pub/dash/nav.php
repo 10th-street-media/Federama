@@ -38,6 +38,7 @@
                 <div id="mediaMenu" class="w3-hide w3-white w3-card">
                         <a href="<?php echo $website_url."dash/media.php"; ?>" class="w3-bar-item w3-button"><?php echo _('Media library'); ?></a>
                         <a href="<?php echo $website_url."dash/add-media.php"; ?>" class="w3-bar-item w3-button"><?php echo _('Add media'); ?></a>
+                        <a href="<?php echo $website_url."dash/bulk-add-media.php"; ?>" class="w3-bar-item w3-button"><?php echo _('Bulk add media'); ?></a>
                     </div>
                 <a href="#" class="w3-bar-item w3-button" title="<?php echo _("Your profile."); ?>" onclick="myProfile()"><i class="fa fa-lg fa-user" ></i>&nbsp;<?php echo _("Profile"); ?>&nbsp;<i class="fa fa-caret-down w3-right"></i></a>
                     <div id="profileMenu" class="w3-hide w3-white w3-card">
