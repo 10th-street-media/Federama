@@ -9,9 +9,9 @@
  */
 ?>
 <?php
-include			"../../functions.php";
-require			"database-connect.php";
-require_once	"configuration-data.php";
+include         "../../functions.php";
+require         "database-connect.php";
+require_once    "configuration-data.php";
 
 
 $nodeinfometa = fopen("../.well-known/nodeinfo", "w") or die("Unable to open or create nodeinfo file");
