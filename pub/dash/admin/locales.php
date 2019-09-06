@@ -13,7 +13,7 @@ require			"../../includes/database-connect.php";
 require_once	"../../includes/configuration-data.php";
 require_once	"../../includes/verify-cookies.php";
 
-$pagetitle = _("Locales⋮$website_name — Ꞙederama");
+$pagetitle = _("Locales « $website_name « Ꞙederama");
 include "header.php";
 include "../nav.php";
 ?>

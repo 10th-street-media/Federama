@@ -57,7 +57,7 @@ if (isset($_POST['post-submit'])) {
 }
 
 
-$pagetitle = _("Edit page⋮$website_name — Ꞙederama");
+$pagetitle = _("Edit page « $website_name « Ꞙederama");
 include "header.php";
 include "nav.php";
 ?>

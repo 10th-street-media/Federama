@@ -15,7 +15,7 @@ require_once	"../includes/configuration-data.php";
 require_once	"../includes/verify-cookies.php";
 include_once	"../nodeinfo/version.php";
 
-$pagetitle = _("Dashboard⋮$website_name — Ꞙederama");
+$pagetitle = _("Dashboard « $website_name « Ꞙederama");
 include "header.php";
 include "nav.php";
 ?>

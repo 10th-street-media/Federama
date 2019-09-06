@@ -35,7 +35,7 @@ if (isset($_POST['postdelete'])) {
 }
 
 
-$pagetitle = _("Delete page⋮$website_name — Ꞙederama");
+$pagetitle = _("Delete page « $website_name « Ꞙederama");
 include "header.php";
 include "nav.php";
 ?>

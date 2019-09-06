@@ -29,7 +29,7 @@ if (isset($_POST['post-submit'])) {
 }
 
 
-$pagetitle = _("Add new post⋮$website_name — Ꞙederama");
+$pagetitle = _("Add new post « $website_name « Ꞙederama");
 include "header.php";
 include "nav.php";
 ?>
