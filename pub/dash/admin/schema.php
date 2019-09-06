@@ -232,32 +232,106 @@ require			"../../includes/database-connect.php";
 
 
 //
+// Create the ".TBLPREFIX."media table
+//
+    $media_user_comment     = _("Who uploaded this media?");
+    $media_date_comment     = _("When was it uploaded?");
+    $media_url_comment      = _("Where is it located on this server?");
+    $media_slug_comment     = _("URL-friendly version of media_title");
+    $media_status_comment   = _("From ".TBLPREFIX."post_statuses table");
+    $media_type_comment     = _("From ".TBLPREFIX."media_types table");
+    $media_tbl_comment      = _("Table for media");
+
+    $create_media_tbl = "CREATE TABLE ".TBLPREFIX."media (
+            media_id int(11) NOT NULL AUTO INCREMENT PRIMARY KEY,
+            user_name varchar(20) NOT NULL COMMENT '".$media_user_comment."',
+            media_date datetime NOT NULL COMMENT '".$media_date_comment."',
+            media_url tinytext NOT NULL COMMENT '".$media_url_comment."',
+            media_title varchar(255) NOT NULL,
+            media_slug varchar(255) NOT NULL COMMENT '".$media_tbl_comment."',
+            media_status varchar(20) NOT NULL COMMENT '".$media_status_comment."',
+            media_type varchar(20) NOT NULL COMMENT '".$media_type_comment."',
+            media_modified_date datetime NOT NULL,
+            media_tags text NOT NULL,
+            media_categories text NOT NULL,
+            comments_open tinyint(4) NOT NULL,
+            pings_open tinyint(4) NOT NULL,
+    ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COMMENT='".$media_tbl_comment."' COLLATE=utf8mb4_unicode_ci;";
+
+  if (mysqli_query($dbconn,$create_media_tbl)) {
+    /* translators: Do not translate ".TBLPREFIX."media in following message */
+    echo _("Table <i>".TBLPREFIX."media</i> successfully created.")."<br>\n\n";
+  } else {
+    /* translators: Do not translate ".TBLPREFIX."media in following message */
+    echo _("Error: Could not create table <i>".TBLPREFIX."media</i>.")."<br>\n\n";
+  }
+
+
+
+//
+// Create the ".TBLPREFIX."media_types table
+//
+  $create_media_types_tbl = "CREATE TABLE ".TBLPREFIX."media_types (
+    media_type_name varchar(20) NOT NULL,
+    PRIMARY KEY (media_type_name)
+  ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;";
+
+  if (mysqli_query($dbconn,$create_media_types_tbl)) {
+    /* translators: Do not translate ".TBLPREFIX."media_types in following message */
+    echo _("Table <i>".TBLPREFIX."media_types</i> successfully created.")."<br>\n\n";
+  } else {
+    /* translators: Do not translate ".TBLPREFIX."media_types in following message */
+    echo _("Error: Could not create table <i>".TBLPREFIX."media_types</i>.")."<br>\n\n";
+  }
+
+//
+// Fill the ".TBLPREFIX."media_types table with some default data
+// Some of these are aspirational
+//
+  $fill_media_types_tbl = "INSERT INTO ".TBLPREFIX."media_types (
+                            media_type_name
+                          ) VALUES
+                          ('AUDIO'),
+                          ('IMAGE'),
+                          ('VIDEO'),
+                          ('DOCUMENT'),
+                          ('PACKAGE')";
+
+  if (mysqli_query($dbconn,$fill_media_types_tbl)) {
+    /* translators: Do not translate ".TBLPREFIX."media_types in following message */
+    echo _("Default data added to table <i>".TBLPREFIX."media_types</i>.")."<br>\n\n";
+  } else {
+    /* translators: Do not translate ".TBLPREFIX."media_types in following message */
+    echo _("Error: Could not add data to table <i>".TBLPREFIX."media_types</i>.")."<br>\n\n";
+  }
+
+//
 // Create the ".TBLPREFIX."posts table
 //
-	$create_posts_tbl = "CREATE TABLE ".TBLPREFIX."posts (
-			  post_id int(11) NOT NULL AUTO_INCREMENT,
-			  user_id int(11) NOT NULL,
-			  post_date datetime NOT NULL,
-			  post_title varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-			  post_slug varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'URL friendly version of post_title',
-			  post_text text COLLATE utf8mb4_unicode_ci NOT NULL,
-			  post_status varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'draft, private, or public',
-			  post_type varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'post or page',
-			  post_modified_date datetime NOT NULL,
-			  post_tags text COLLATE utf8mb4_unicode_ci NOT NULL,
-			  post_categories text COLLATE utf8mb4_unicode_ci NOT NULL,
-			  comment_status varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'open or closed',
-			  ping_status varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'open or closed',
-			  PRIMARY KEY (post_id),
-			  UNIQUE KEY `post_title` (`post_title`(250)),
-			  KEY user_id (user_id),
-			  KEY post_date (post_date),
-			  KEY post_slug (post_slug(250)),
-			  KEY post_status (post_status),
-			  KEY post_type (post_type),
-			  KEY comment_status (comment_status),
-			  KEY ping_status (ping_status)
-			) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;";
+    $create_posts_tbl = "CREATE TABLE ".TBLPREFIX."posts (
+              post_id int(11) NOT NULL AUTO_INCREMENT,
+              user_id int(11) NOT NULL,
+              post_date datetime NOT NULL,
+              post_title varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+              post_slug varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'URL friendly version of post_title',
+              post_text text COLLATE utf8mb4_unicode_ci NOT NULL,
+              post_status varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'draft, private, or public',
+              post_type varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'post or page',
+              post_modified_date datetime NOT NULL,
+              post_tags text COLLATE utf8mb4_unicode_ci NOT NULL,
+              post_categories text COLLATE utf8mb4_unicode_ci NOT NULL,
+              comments_open tinyint(4) NOT NULL,
+              pings_open tinyint(4) NOT NULL,
+              PRIMARY KEY (post_id),
+              UNIQUE KEY `post_title` (`post_title`(250)),
+              KEY user_id (user_id),
+              KEY post_date (post_date),
+              KEY post_slug (post_slug(250)),
+              KEY post_status (post_status),
+              KEY post_type (post_type),
+              KEY comments_open (comment_status),
+              KEY pings_open (ping_status)
+            ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;";
 
   if (mysqli_query($dbconn,$create_posts_tbl)) {
     /* translators: Do not translate ".TBLPREFIX."posts in following message */
@@ -325,7 +399,7 @@ require			"../../includes/database-connect.php";
 // Fill the ".TBLPREFIX."post_types table with some default data
 // Some of these are aspirational
 //
-  $fill_post_statuses_tbl = "INSERT INTO ".TBLPREFIX."post_types (
+  $fill_post_types_tbl = "INSERT INTO ".TBLPREFIX."post_types (
                             post_type_name
                           ) VALUES
                           ('POST'),
@@ -334,12 +408,12 @@ require			"../../includes/database-connect.php";
                           ('SINGLE_IMAGE'),
                           ('SINGLE_VIDEO')";
 
-  if (mysqli_query($dbconn,$fill_post_statuses_tbl)) {
-    /* translators: Do not translate ".TBLPREFIX."post_statuses in following message */
-    echo _("Default data added to table <i>".TBLPREFIX."post_statuses</i>.")."<br>\n\n";
+  if (mysqli_query($dbconn,$fill_post_types_tbl)) {
+    /* translators: Do not translate ".TBLPREFIX."post_types in following message */
+    echo _("Default data added to table <i>".TBLPREFIX."post_types</i>.")."<br>\n\n";
   } else {
-    /* translators: Do not translate ".TBLPREFIX."post_statuses in following message */
-    echo _("Error: Could not add data to table <i>".TBLPREFIX."post_statuses</i>.")."<br>\n\n";
+    /* translators: Do not translate ".TBLPREFIX."post_types in following message */
+    echo _("Error: Could not add data to table <i>".TBLPREFIX."post_types</i>.")."<br>\n\n";
   }
 
 
