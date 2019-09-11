@@ -85,7 +85,7 @@ if (isset($_COOKIE['uname'])) {
 }
 
 
-$pagetitle = _("Home");
+$pagetitle = $website_name;
 $objdescription = $website_description;
 
 include_once "includes/fed-header.php";
