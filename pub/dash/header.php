@@ -9,46 +9,56 @@
  */
 
  if(isset($_COOKIE['loc'])) {
-	$user_locale = $_COOKIE['loc'];
+    $user_locale = $_COOKIE['loc'];
  } else {
-	$user_locale = "en";
+    $user_locale = "en";
  }
 
-  	// have Amore use the right localization
-	putenv("LC_MESSAGES=".$user_locale);
-	setlocale(LC_MESSAGES, $user_locale);
+    // have Amore use the right localization
+    putenv("LC_MESSAGES=".$user_locale);
+    setlocale(LC_MESSAGES, $user_locale);
 
-	// set the textdomain
-	$textdomain = "federama";
-	bindtextdomain($textdomain, "../locales");
-	bind_textdomain_codeset($textdomain, 'UTF-8');
-	textdomain($textdomain);
+    // set the textdomain
+    $textdomain = "federama";
+    bindtextdomain($textdomain, "../locales");
+    bind_textdomain_codeset($textdomain, 'UTF-8');
+    textdomain($textdomain);
 ?>
 <!DOCTYPE html>
 <html lang="<?php echo $user_locale; ?>">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<link rel="shortcut icon" href="images/favicon.ico">
-	<title><?php echo $pagetitle; ?></title>
-	<meta name="description" content="<?php echo $website_description; ?>">
-	<link rel="stylesheet" href="style/dash-style-default.css" type="text/css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <title><?php echo $pagetitle; ?></title>
+    <meta name="description" content="<?php echo $website_description; ?>">
+    <link rel="stylesheet" href="style/dash-style-default.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- include libraries(jQuery, bootstrap) -->
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" />
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <!-- include summernote css/js-->
+    <link href="style/dist/summernote.css" rel="stylesheet">
+    <script src="style/dist/summernote.js"></script>
+
 </head>
 <body class="w3-theme-l5">
-	<div class="w3-top">
-	<header class="w3-container w3-bar w3-large w3-theme-d1">
-		<div class="w3-left w3-padding"><?php echo $website_name; ?></div>
-		<div class="w3-right w3-padding"><?php
+    <div class="w3-top">
+    <header class="w3-container w3-bar w3-large w3-theme-d1">
+        <div class="w3-left w3-padding"><?php echo $website_name; ?></div>
+        <div class="w3-right w3-padding"><?php
 if ($u_dname != "") {
-	echo _("Hello, <a href=\"".$website_url."dash/profile.php\">$u_dname</a>");
+    echo _("Hello, <a href=\"".$website_url."dash/profile.php\">$u_dname</a>");
 } else {
-	if ($u_name == "") {
-		$u_name = $_COOKIE['uname'];
-	}
-	echo _("Hello, <a href=\"".$website_url."dash/profile.php\">$u_name</a>");
+    if ($u_name == "") {
+        $u_name = $_COOKIE['uname'];
+    }
+    echo _("Hello, <a href=\"".$website_url."dash/profile.php\">$u_name</a>");
 }
 ?></div>
-		<div class="w3-center w3-padding w3-large"><img src="<?php echo $website_url; ?>images/federama-logo-white-24.png"></div>
-	</header>
-	</div> <!-- .w3-top -->
+        <div class="w3-center w3-padding w3-large"><img src="<?php echo $website_url; ?>images/federama-logo-white-24.png"></div>
+    </header>
+    </div> <!-- .w3-top -->
