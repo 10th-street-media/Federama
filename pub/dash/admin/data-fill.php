@@ -307,10 +307,10 @@ require			"../../includes/database-connect.php";
 
   if (mysqli_query($dbconn,$fill_locations_tbl)) {
     /* translators: Do not translate ".TBLPREFIX."locations in following message */
-    echo _("Default data added to table <i>".TBLPREFIX."locations</i>.")."<br>\n\n";
+    echo _("<span style=\"color:green;\">Default data added to table <i>".TBLPREFIX."locations</i>.")."</span><br>\n\n";
     } else {
     /* translators: Do not translate locations in following message */
-    echo _("Error: Could not add data to table <i>".TBLPREFIX."locations </i>.")."<br>\n\n";
+    echo _("<span style=\"color:red;\">Error: Could not add data to table <i>".TBLPREFIX."locations </i>.")."</span><br>\n\n";
   }
 
 
@@ -831,14 +831,16 @@ require			"../../includes/database-connect.php";
 
   if (mysqli_query($dbconn,$fill_time_zones_tbl)) {
     /* translators: Do not translate ".TBLPREFIX."time_zones in following message */
-    echo _("Default data added to table <i>".TBLPREFIX."time_zones</i>.")."<br>\n\n";
+    echo _("<span style=\"color:green;\">Default data added to table <i>".TBLPREFIX."time_zones</i>.")."</span><br>\n\n";
   } else {
     /* translators: Do not translate time_zones in following message */
-    echo _("Error: Could not add data to table <i>".TBLPREFIX."time_zones</i>.")."<br>\n\n";
+    echo _("<span style=\"color:red;\">Error: Could not add data to table <i>".TBLPREFIX."time_zones</i>.")."</span><br>\n\n";
   }
 
 //
 // Now that the tables are filled, let us go to post-install.php
 //
-redirect("post-install.php");
+echo "Go to <a href=\"post-install.php\">post-install.php</a>";
+#header("Location: post-install.php");
+#redirect("post-install.php");
 ?>

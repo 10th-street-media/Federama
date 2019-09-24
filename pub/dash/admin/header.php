@@ -46,6 +46,6 @@ if ($u_dname !== "") {
 	echo _("Hello, <a href=\"".$website_url."dash/profile.php\">$u_name</a>");
 }
 ?></div>
-		<div class="w3-center w3-padding w3-large"><img src="<?php echo $website_url; ?>images/federama-logo-white-24.png"></div>
+		<div class="w3-center w3-padding w3-large"><img src="../../images/federama-logo-white-24.png"></div>
 	</header>
 	</div> <!-- .w3-top -->
