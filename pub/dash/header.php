@@ -32,7 +32,8 @@
     <link rel="shortcut icon" href="images/favicon.ico">
     <title><?php echo $pagetitle; ?></title>
     <meta name="description" content="<?php echo $website_description; ?>">
-    <link rel="stylesheet" href="style/dash-style-default.css" type="text/css">
+
+    <!-- include FontAwesome icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- include libraries(jQuery, bootstrap) -->
@@ -43,6 +44,9 @@
     <!-- include summernote css/js-->
     <link href="style/dist/summernote.css" rel="stylesheet">
     <script src="style/dist/summernote.js"></script>
+
+    <!-- include default Federama dashboard CSS -->
+    <link rel="stylesheet" href="style/dash-style-default.css" type="text/css">
 
 </head>
 <body class="w3-theme-l5">
@@ -59,6 +63,6 @@ if ($u_dname != "") {
     echo _("Hello, <a href=\"".$website_url."dash/profile.php\">$u_name</a>");
 }
 ?></div>
-        <div class="w3-center w3-padding w3-large"><img src="<?php echo $website_url; ?>images/federama-logo-white-24.png"></div>
+        <div class="w3-center w3-padding w3-large"><img src="../images/federama-logo-white-24.png"></div>
     </header>
     </div> <!-- .w3-top -->
