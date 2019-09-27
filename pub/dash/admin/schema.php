@@ -37,10 +37,10 @@ require			"../../includes/database-connect.php";
 
   if (mysqli_query($dbconn,$create_actor_types_tbl)) {
     /* translators: Do not translate ".TBLPREFIX."actor_types in following message */
-    echo _("Table <i>".TBLPREFIX."actor_types</i> successfully created.")."<br>\n\n";
+    echo _("<span style=\"color:green;\">Table <i>".TBLPREFIX."actor_types</i> successfully created.")."</span><br>\n\n";
   } else {
     /* translators: Do not translate ".TBLPREFIX."actor_types in following message */
-    echo _("Error: Could not create table <i>".TBLPREFIX."actor_types</i>.")."<br>\n\n";
+    echo _("<span style=\"color:red;\">Error: Could not create table <i>".TBLPREFIX."actor_types</i>.")."</span><br>\n\n";
   }
 
 //
@@ -57,10 +57,10 @@ require			"../../includes/database-connect.php";
 
   if (mysqli_query($dbconn,$fill_actor_types_tbl)) {
     /* translators: Do not translate ".TBLPREFIX."actor_types in following message */
-    echo _("Default data added to table <i>".TBLPREFIX."actor_types</i>.")."<br>\n\n";
+    echo _("<span style=\"color:green;\">Default data added to table <i>".TBLPREFIX."actor_types</i>.")."</span><br>\n\n";
   } else {
     /* translators: Do not translate ".TBLPREFIX."actor_types in following message */
-    echo _("Error: Could not add data to table <i>".TBLPREFIX."actor_types</i>.")."<br>\n\n";
+    echo _("<span style=\"color:red;\">Error: Could not add data to table <i>".TBLPREFIX."actor_types</i>.")."</span><br>\n\n";
   }
 
 
@@ -103,10 +103,10 @@ require			"../../includes/database-connect.php";
 
   if (mysqli_query($dbconn,$create_comments_tbl)) {
     /* translators: Do not translate ".TBLPREFIX."comments in following message */
-    echo _("Table <i>".TBLPREFIX."comments</i> successfully created.")."<br>\n\n";
+    echo _("<span style=\"color:green;\">Table <i>".TBLPREFIX."comments</i> successfully created.")."</span><br>\n\n";
   } else {
     /* translators: Do not translate ".TBLPREFIX."comments in following message */
-    echo _("Error: Could not create table <i>".TBLPREFIX."comments</i>.")."<br>\n\n";
+    echo _("<span style=\"color:red;\">Error: Could not create table <i>".TBLPREFIX."comments</i>.")."</span><br>\n\n";
   }
 
 
@@ -139,10 +139,10 @@ require			"../../includes/database-connect.php";
 
   if (mysqli_query($dbconn,$create_configuration_tbl)) {
     /* translators: Do not translate ".TBLPREFIX."configuration in following message */
-    echo _("Table <i>".TBLPREFIX."configuration</i> successfully created.")."<br>\n\n";
+    echo _("<span style=\"color:green;\">Table <i>".TBLPREFIX."configuration</i> successfully created.")."</span><br>\n\n";
   } else {
     /* translators: Do not translate ".TBLPREFIX."configuration in following message */
-    echo _("Error: Could not create table <i>".TBLPREFIX."configuration</i>.")."<br>\n\n";
+    echo _("<span style=\"color:red;\">Error: Could not create table <i>".TBLPREFIX."configuration</i>.")."</span><br>\n\n";
   }
 
 //
@@ -166,10 +166,10 @@ require			"../../includes/database-connect.php";
 
   if (mysqli_query($dbconn,$fill_configuration_tbl)) {
     /* translators: Do not translate ".TBLPREFIX."configuration in following message */
-    echo _("Default data added to table <i>".TBLPREFIX."configuration</i>.")."<br>\n\n";
+    echo _("<span style=\"color:green;\">Default data added to table <i>".TBLPREFIX."configuration</i>.")."</span><br>\n\n";
   } else {
     /* translators: Do not translate ".TBLPREFIX."configuration in following message */
-    echo _("Error: Could not add data to table <i>".TBLPREFIX."configuration</i>.")."<br>\n\n";
+    echo _("<span style=\"color:red;\">Error: Could not add data to table <i>".TBLPREFIX."configuration</i>.")."</span><br>\n\n";
   }
 
 
@@ -187,10 +187,10 @@ require			"../../includes/database-connect.php";
 
   if (mysqli_query($dbconn,$create_locales_tbl)) {
     /* translators: Do not translate ".TBLPREFIX."locales in following message */
-    echo _("Table <i>".TBLPREFIX."locales</i> successfully created.")."<br>\n\n";
+    echo _("<span style=\"color:green;\">Table <i>".TBLPREFIX."locales</i> successfully created.")."</span><br>\n\n";
   } else {
     /* translators: Do not translate ".TBLPREFIX."locales in following message */
-    echo _("Error: Could not create table <i>".TBLPREFIX."locales</i>.")."<br>\n\n";
+    echo _("<span style=\"color:red;\">Error: Could not create table <i>".TBLPREFIX."locales</i>.")."</span><br>\n\n";
   }
 
 //
@@ -203,10 +203,10 @@ require			"../../includes/database-connect.php";
 
   if (mysqli_query($dbconn,$fill_locales_tbl)) {
     /* translators: Do not translate ".TBLPREFIX."locales in following message */
-    echo _("Default data added to table <i>".TBLPREFIX."locales</i>.")."<br>\n\n";
+    echo _("<span style=\"color:green;\">Default data added to table <i>".TBLPREFIX."locales</i>.")."</span><br>\n\n";
   } else {
     /* translators: Do not translate ".TBLPREFIX."locales in following message */
-    echo _("Error: Could not add data to table <i>".TBLPREFIX."locales</i>.")."<br>\n\n";
+    echo _("<span style=\"color:red;\">Error: Could not add data to table <i>".TBLPREFIX."locales</i>.")."</span><br>\n\n";
   }
 
 
@@ -224,26 +224,26 @@ require			"../../includes/database-connect.php";
 
   if (mysqli_query($dbconn,$create_locations_tbl)) {
     /* translators: Do not translate ".TBLPREFIX."locations in following message */
-    echo _("Table <i>".TBLPREFIX."locations</i> successfully created.")."<br>\n\n";
+    echo _("<span style=\"color:green;\">Table <i>".TBLPREFIX."locations</i> successfully created.")."</span><br>\n\n";
   } else {
     /* translators: Do not translate ".TBLPREFIX."locations in following message */
-    echo _("Error: Could not create table <i>".TBLPREFIX."locations</i>.")."<br>\n\n";
+    echo _("<span style=\"color:red;\">Error: Could not create table <i>".TBLPREFIX."locations</i>.")."</span><br>\n\n";
   }
 
 
 //
 // Create the ".TBLPREFIX."media table
 //
-    $media_user_comment     = _("Who uploaded this media?");
-    $media_date_comment     = _("When was it uploaded?");
-    $media_url_comment      = _("Where is it located on this server?");
-    $media_slug_comment     = _("URL-friendly version of media_title");
-    $media_status_comment   = _("From ".TBLPREFIX."post_statuses table");
-    $media_type_comment     = _("From ".TBLPREFIX."media_types table");
+    $media_user_comment     = _("Who uploaded this media\?");
+    $media_date_comment     = _("When was it uploaded\?");
+    $media_url_comment      = _("Where is it located on this server\?");
+    $media_slug_comment     = _("URL\-friendly version of media\_title");
+    $media_status_comment   = _("From ".TBLPREFIX."post\_statuses table");
+    $media_type_comment     = _("From ".TBLPREFIX."media\_types table");
     $media_tbl_comment      = _("Table for media");
 
     $create_media_tbl = "CREATE TABLE ".TBLPREFIX."media (
-            media_id int(11) NOT NULL AUTO INCREMENT PRIMARY KEY,
+            media_id int(11) NOT NULL AUTO_INCREMENT,
             user_name varchar(20) NOT NULL COMMENT '".$media_user_comment."',
             media_date datetime NOT NULL COMMENT '".$media_date_comment."',
             media_url tinytext NOT NULL COMMENT '".$media_url_comment."',
@@ -256,14 +256,16 @@ require			"../../includes/database-connect.php";
             media_categories text NOT NULL,
             comments_open tinyint(4) NOT NULL,
             pings_open tinyint(4) NOT NULL,
+            PRIMARY KEY (media_id)
     ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COMMENT='".$media_tbl_comment."' COLLATE=utf8mb4_unicode_ci;";
 
   if (mysqli_query($dbconn,$create_media_tbl)) {
     /* translators: Do not translate ".TBLPREFIX."media in following message */
-    echo _("Table <i>".TBLPREFIX."media</i> successfully created.")."<br>\n\n";
+    echo _("<span style=\"color:green;\">Table <i>".TBLPREFIX."media</i> successfully created.")."</span><br>\n\n";
   } else {
     /* translators: Do not translate ".TBLPREFIX."media in following message */
-    echo _("Error: Could not create table <i>".TBLPREFIX."media</i>.")."<br>\n\n";
+    echo _("<span style=\"color:red;\">Error: Could not create table <i>".TBLPREFIX."media</i>.")."</span><br>\n\n";
+    echo $create_media_tbl."<br>\n\n";
   }
 
 
@@ -278,10 +280,10 @@ require			"../../includes/database-connect.php";
 
   if (mysqli_query($dbconn,$create_media_types_tbl)) {
     /* translators: Do not translate ".TBLPREFIX."media_types in following message */
-    echo _("Table <i>".TBLPREFIX."media_types</i> successfully created.")."<br>\n\n";
+    echo _("<span style=\"color:green;\">Table <i>".TBLPREFIX."media_types</i> successfully created.")."</span><br>\n\n";
   } else {
     /* translators: Do not translate ".TBLPREFIX."media_types in following message */
-    echo _("Error: Could not create table <i>".TBLPREFIX."media_types</i>.")."<br>\n\n";
+    echo _("<span style=\"color:red;\">Error: Could not create table <i>".TBLPREFIX."media_types</i>.")."</span><br>\n\n";
   }
 
 //
@@ -299,11 +301,59 @@ require			"../../includes/database-connect.php";
 
   if (mysqli_query($dbconn,$fill_media_types_tbl)) {
     /* translators: Do not translate ".TBLPREFIX."media_types in following message */
-    echo _("Default data added to table <i>".TBLPREFIX."media_types</i>.")."<br>\n\n";
+    echo _("<span style=\"color:green;\">Default data added to table <i>".TBLPREFIX."media_types</i>.")."</span><br>\n\n";
   } else {
     /* translators: Do not translate ".TBLPREFIX."media_types in following message */
-    echo _("Error: Could not add data to table <i>".TBLPREFIX."media_types</i>.")."<br>\n\n";
+    echo _("<span style=\"color:red;\">Error: Could not add data to table <i>".TBLPREFIX."media_types</i>.")."</span><br>\n\n";
   }
+
+
+
+//
+// Create the ".TBLPREFIX."messages table
+//
+    $message_url_comment = "website URL \+ \/messages\/ \+ YmdHis \+ userid";
+    $message_to_comment = "The accounts that are being sent the message";
+    $message_in_reply_to_comment = "The URL that this message is in reply to";
+    $message_flagged_by_comment = "The user\_id of the person who flagged it";
+    $message_sticky_comment = "Boolean if a message is sticky and will appear at top of timeline.";
+
+    $create_messages_tbl = "CREATE TABLE ".TBLPREFIX."messages (
+        message_id varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
+        message_url tinytext COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '".$message_url_comment."',
+        user_name varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+        message_to text COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '".$message_to_comment."',
+        message_time datetime NOT NULL,
+        message_privacy_level varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+        message_in_reply_to tinytext COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '".$message_in_reply_to_comment."',
+        message_text text COLLATE utf8mb4_unicode_ci NOT NULL,
+        message_flagged_on datetime NOT NULL,
+        message_flagged_by int(11) NOT NULL COMMENT '".$message_flagged_by_comment."',
+        message_deleted_on datetime NOT NULL,
+        message_deleted_by int(11) NOT NULL,
+        message_likes text COLLATE utf8mb4_unicode_ci NOT NULL,
+        message_dislikes text COLLATE utf8mb4_unicode_ci NOT NULL,
+        message_shares text COLLATE utf8mb4_unicode_ci NOT NULL,
+        message_sticky tinyint(1) NOT NULL COMMENT '".$message_sticky_comment."',
+        PRIMARY KEY (message_id),
+        KEY user_name (user_name),
+        KEY message_time (message_time),
+        KEY message_flagged_on (message_flagged_on),
+        KEY message_flagged_by (message_flagged_by),
+        KEY message_deleted_on (message_deleted_on),
+        KEY message_deleted_by (message_deleted_by)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;";
+
+  if (mysqli_query($dbconn,$create_messages_tbl)) {
+    /* translators: Do not translate ".TBLPREFIX."messages in following message */
+    echo _("<span style=\"color:green;\">Table <i>".TBLPREFIX."messages</i> successfully created.")."</span><br>\n\n";
+  } else {
+    /* translators: Do not translate ".TBLPREFIX."messages in following message */
+    echo _("<span style=\"color:red;\">Error: Could not create table <i>".TBLPREFIX."messages</i>.")."</span><br>\n\n";
+    echo $create_messages_tbl."<br>\n\n";
+  }
+
+
 
 //
 // Create the ".TBLPREFIX."posts table
@@ -329,16 +379,17 @@ require			"../../includes/database-connect.php";
               KEY post_slug (post_slug(250)),
               KEY post_status (post_status),
               KEY post_type (post_type),
-              KEY comments_open (comment_status),
-              KEY pings_open (ping_status)
+              KEY comments_open (comments_open),
+              KEY pings_open (pings_open)
             ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;";
 
   if (mysqli_query($dbconn,$create_posts_tbl)) {
     /* translators: Do not translate ".TBLPREFIX."posts in following message */
-    echo _("Table <i>".TBLPREFIX."posts</i> successfully created.")."<br>\n\n";
+    echo _("<span style=\"color:green;\">Table <i>".TBLPREFIX."posts</i> successfully created.")."</span><br>\n\n";
   } else {
     /* translators: Do not translate ".TBLPREFIX."posts in following message */
-    echo _("Error: Could not create table <i>".TBLPREFIX."posts</i>.")."<br>\n\n";
+    echo _("<span style=\"color:red;\">Error: Could not create table <i>".TBLPREFIX."posts</i>.")."</span><br>\n\n";
+    echo $create_posts_tbl."<br>\n\n";
   }
 
 
@@ -352,10 +403,10 @@ require			"../../includes/database-connect.php";
 
   if (mysqli_query($dbconn,$create_post_statuses_tbl)) {
     /* translators: Do not translate ".TBLPREFIX."post_statuses in following message */
-    echo _("Table <i>".TBLPREFIX."post_statuses</i> successfully created.")."<br>\n\n";
+    echo _("<span style=\"color:green;\">Table <i>".TBLPREFIX."post_statuses</i> successfully created.")."</span><br>\n\n";
   } else {
     /* translators: Do not translate ".TBLPREFIX."post_statuses in following message */
-    echo _("Error: Could not create table <i>".TBLPREFIX."post_statuses</i>.")."<br>\n\n";
+    echo _("<span style=\"color:red;\">Error: Could not create table <i>".TBLPREFIX."post_statuses</i>.")."</span><br>\n\n";
   }
 
 //
@@ -371,10 +422,10 @@ require			"../../includes/database-connect.php";
 
   if (mysqli_query($dbconn,$fill_post_statuses_tbl)) {
     /* translators: Do not translate ".TBLPREFIX."post_statuses in following message */
-    echo _("Default data added to table <i>".TBLPREFIX."post_statuses</i>.")."<br>\n\n";
+    echo _("<span style=\"color:green;\">Default data added to table <i>".TBLPREFIX."post_statuses</i>.")."</span><br>\n\n";
   } else {
     /* translators: Do not translate ".TBLPREFIX."post_statuses in following message */
-    echo _("Error: Could not add data to table <i>".TBLPREFIX."post_statuses</i>.")."<br>\n\n";
+    echo _("<span style=\"color:red;\">Error: Could not add data to table <i>".TBLPREFIX."post_statuses</i>.")."</span><br>\n\n";
   }
 
 
@@ -389,10 +440,10 @@ require			"../../includes/database-connect.php";
 
   if (mysqli_query($dbconn,$create_post_types_tbl)) {
     /* translators: Do not translate ".TBLPREFIX."post_types in following message */
-    echo _("Table <i>".TBLPREFIX."post_types</i> successfully created.")."<br>\n\n";
+    echo _("<span style=\"color:green;\">Table <i>".TBLPREFIX."post_types</i> successfully created.")."</span><br>\n\n";
   } else {
     /* translators: Do not translate ".TBLPREFIX."post_types in following message */
-    echo _("Error: Could not create table <i>".TBLPREFIX."post_types</i>.")."<br>\n\n";
+    echo _("<span style=\"color:red;\">Error: Could not create table <i>".TBLPREFIX."post_types</i>.")."</span><br>\n\n";
   }
 
 //
@@ -410,10 +461,10 @@ require			"../../includes/database-connect.php";
 
   if (mysqli_query($dbconn,$fill_post_types_tbl)) {
     /* translators: Do not translate ".TBLPREFIX."post_types in following message */
-    echo _("Default data added to table <i>".TBLPREFIX."post_types</i>.")."<br>\n\n";
+    echo _("<span style=\"color:green;\">Default data added to table <i>".TBLPREFIX."post_types</i>.")."</span><br>\n\n";
   } else {
     /* translators: Do not translate ".TBLPREFIX."post_types in following message */
-    echo _("Error: Could not add data to table <i>".TBLPREFIX."post_types</i>.")."<br>\n\n";
+    echo _("<span style=\"color:green;\">Error: Could not add data to table <i>".TBLPREFIX."post_types</i>.")."</span><br>\n\n";
   }
 
 
@@ -430,10 +481,10 @@ require			"../../includes/database-connect.php";
 
   if (mysqli_query($dbconn,$create_privacy_levels_tbl)) {
     /* translators: Do not translate ".TBLPREFIX."privacy_levels in following message */
-    echo _("Table <i>".TBLPREFIX."privacy_levels</i> successfully created.")."<br>\n\n";
+    echo _("<span style=\"color:green;\">Table <i>".TBLPREFIX."privacy_levels</i> successfully created.")."</span><br>\n\n";
   } else {
     /* translators: Do not translate ".TBLPREFIX."privacy_levels in following message */
-    echo _("Error: Could not create table <i>".TBLPREFIX."privacy_levels</i>.")."<br>\n\n";
+    echo _("<span style=\"color:red;\">Error: Could not create table <i>".TBLPREFIX."privacy_levels</i>.")."</span><br>\n\n";
   }
 
 //
@@ -453,10 +504,10 @@ require			"../../includes/database-connect.php";
 
   if (mysqli_query($dbconn,$fill_privacy_levels_tbl)) {
     /* translators: Do not translate ".TBLPREFIX."privacy_levels in following message */
-    echo _("Default data added to table <i>".TBLPREFIX."privacy_levels</i>.")."<br>\n\n";
+    echo _("<span style=\"color:green;\">Default data added to table <i>".TBLPREFIX."privacy_levels</i>.")."</span><br>\n\n";
   } else {
     /* translators: Do not translate ".TBLPREFIX."privacy_levels in following message */
-    echo _("Error: Could not add data to table <i>".TBLPREFIX."privacy_levels</i>.")."<br>\n\n";
+    echo _("<span style=\"color:red;\">Error: Could not add data to table <i>".TBLPREFIX."privacy_levels</i>.")."</span><br>\n\n";
   }
 
 
@@ -478,10 +529,10 @@ require			"../../includes/database-connect.php";
 
   if (mysqli_query($dbconn,$create_time_zones_tbl)) {
     /* translators: Do not translate ".TBLPREFIX."time_zones in following message */
-    echo _("Table <i>".TBLPREFIX."time_zones</i> successfully created.")."<br>\n\n";
+    echo _("<span style=\"color:green;\">Table <i>".TBLPREFIX."time_zones</i> successfully created.")."</span><br>\n\n";
   } else {
     /* translators: Do not translate ".TBLPREFIX."time_zones in following message */
-    echo _("Error: Could not create table <i>".TBLPREFIX."time_zones</i>.")."<br>\n\n";
+    echo _("<span style=\"color:red;\">Error: Could not create table <i>".TBLPREFIX."time_zones</i>.")."</span><br>\n\n";
   }
 
 
@@ -545,10 +596,10 @@ require			"../../includes/database-connect.php";
 
   if (mysqli_query($dbconn,$create_users_tbl)) {
     /* translators: Do not translate ".TBLPREFIX."users in following message */
-    echo _("Table <i>".TBLPREFIX."users</i> successfully created.")."<br>\n\n";
+    echo _("<span style=\"color:green;\">Table <i>".TBLPREFIX."users</i> successfully created.")."</span><br>\n\n";
   } else {
     /* translators: Do not translate ".TBLPREFIX."users in following message */
-    echo _("Error: Could not create table <i>".TBLPREFIX."users</i>.")."<br>\n\n";
+    echo _("<span style=\"color:red;\">Error: Could not create table <i>".TBLPREFIX."users</i>.")."</span><br>\n\n";
   }
 
 
@@ -564,10 +615,10 @@ require			"../../includes/database-connect.php";
 
   if (mysqli_query($dbconn,$create_user_levels_tbl)) {
     /* translators: Do not translate ".TBLPREFIX."user_levels in following message */
-    echo _("Table <i>".TBLPREFIX."user_levels</i> successfully created.")."<br>\n\n";
+    echo _("<span style=\"color:green;\">Table <i>".TBLPREFIX."user_levels</i> successfully created.")."</span><br>\n\n";
   } else {
     /* translators: Do not translate ".TBLPREFIX."user_levels in following message */
-    echo _("Error: Could not create table <i>".TBLPREFIX."user_levels</i>.")."<br>\n\n";
+    echo _("<span style=\"color:red;\">Error: Could not create table <i>".TBLPREFIX."user_levels</i>.")."</span><br>\n\n";
   }
 
 //
@@ -584,14 +635,16 @@ require			"../../includes/database-connect.php";
 
   if (mysqli_query($dbconn,$fill_user_levels_tbl)) {
     /* translators: Do not translate ".TBLPREFIX."user_levels in following message */
-    echo _("Default data added to table <i>".TBLPREFIX."user_levels</i>.")."<br>\n\n";
+    echo _("<span style=\"color:green;\">Default data added to table <i>".TBLPREFIX."user_levels</i>.")."</span><br>\n\n";
   } else {
     /* translators: Do not translate ".TBLPREFIX."user_levels in following message */
-    echo _("Error: Could not add data to table <i>".TBLPREFIX."user_levels</i>.")."<br>\n\n";
+    echo _("<span style=\"color:red;\">Error: Could not add data to table <i>".TBLPREFIX."user_levels</i>.")."</span><br>\n\n";
   }
 
 //
 // Now that the tables are created, let's fill most of them
 //
-redirect("data-fill.php");
+echo "Go to <a href=\"data-fill.php\">data-fill.php</a>";
+#header("Location: data-fill.php");
+#redirect("data-fill.php");
 ?>
