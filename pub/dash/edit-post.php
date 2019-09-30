@@ -62,8 +62,8 @@ include "header.php";
 include "nav.php";
 ?>
 
-            <article class="w3-content w3-padding">
-<?php echo $updpostq; ?>
+            <article class="w3-padding w3-col s12 m8 l10">
+
                 <h2 class="w3-padding"><?php echo _("Edit post"); ?></h2>
                 <form method="post" action="edit-post.php">
                     <input type="hidden" name="post-id" id="post-id" value="<?php echo $sel_id; ?>">
