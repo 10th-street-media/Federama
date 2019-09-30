@@ -18,7 +18,7 @@ include "header.php";
 include "nav.php";
 ?>
 
-			<article class="w3-content w3-padding">
+			<article class="w3-padding w3-col s12 m8 l10">
 
 				<h2 class="w3-padding"><?php echo _("Import profile"); ?></h2>
 				<p class="w3-padding"><?php echo "Users can use this page to import profile settings from other CMS platforms. Ideally this will mean all Federama-based platforms, Mastodon, and WordPress. I'm not sure if Pleroma, Misskey, and other Fediverse software platforms have the capability to export profiles."; ?></p>
