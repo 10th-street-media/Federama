@@ -18,7 +18,7 @@ include "header.php";
 include "nav.php";
 ?>
 
-			<article class="w3-content w3-padding">
+			<article class="w3-padding w3-col s12 m8 l10">
 
 				<h2 class="w3-padding"><?php echo _("Delete profile"); ?></h2>
 				<p class="w3-padding"><?php echo "Users cannot completely remove their profile from the Fediverse. Deleting your profile from this website means yuor posts will be removed and their profile will be removed from this website, and their username will be 'reserved' to keep anyone else from claiming it. If their posts were shared by other Fediverse users, those shared posts will remain."; ?></p>

@@ -40,7 +40,7 @@ include "header.php";
 include "nav.php";
 ?>
 
-			<article class="w3-content w3-padding">
+			<article class="w3-padding w3-col s12 m8 l10">
 
 				<h2 class="w3-padding"><?php echo _("Delete page"); ?></h2>
 				<p class="w3-padding"><?php echo _('Deleting a page will remove it from this instance only. If a page has been shared or reposted by users on this or other instances, those versions will still exist.'); ?></p>

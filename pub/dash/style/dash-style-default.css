@@ -35,6 +35,12 @@
 .w3-hover-text-theme:hover {color:#9e9e9e !important}
 .w3-hover-border-theme:hover {border-color:#9e9e9e !important}
 
+/* ********************************* Federama specific css *************************** */
+.fed-sidebar {
+    height: 100%;
+}
+
+/* ******************************** end Federama specific css ************************ */
 
 /* based on w3-theme version 4.13 */
 /* W3.CSS 4.13 June 2019 by Jan Egil and Borge Refsnes */
