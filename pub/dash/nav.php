@@ -9,12 +9,12 @@
 
 ?>
     <!-- THE CONTAINER for the main content -->
-    <main class="w3-row w3-content" style="max-width:1400px;margin-top:40px;">
+    <main class="w3-row" style="margin-top:40px;">
 
         <!-- THE GRID -->
         <div class="w3-cell-row">
 
-            <nav class="w3-sidebar w3-bar-block w3-theme-d2">
+            <nav class="w3-col s12 m4 l2 w3-bar-block w3-theme-d2 fed-sidebar">
                 <a href="<?php echo $website_url."dash/index.php"; ?>" class="w3-bar-item w3-button" title="<?php echo _("Your homepage"); ?>"><i class="fa fa-lg fa-home"></i>&nbsp;<?php echo _("Home"); ?></a>
                 <a href="<?php echo $website_url."dash/posts.php"; ?>" class="w3-bar-item w3-button" title="<?php echo _("Posts on this instance."); ?>"><i class="fa fa-lg fa-pencil"></i>&nbsp;<?php echo _("Posts"); ?></a>
                 <a href="<?php echo $website_url."dash/pages.php"; ?>" class="w3-bar-item w3-button" title="<?php echo _("Pages are posts that exist outside the timeline."); ?>"><i class="fa fa-lg fa-file-text"></i>&nbsp;<?php echo _("Pages"); ?></a>

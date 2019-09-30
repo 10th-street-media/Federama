@@ -20,7 +20,7 @@ include "header.php";
 include "nav.php";
 ?>
 
-			<article class="w3-content w3-padding">
+			<article class="w3-padding w3-col s12 m8 l10">
 
 				<h2 class="w3-padding"><?php echo _("Dashboard"); ?></h2>
 
