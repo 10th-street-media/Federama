@@ -81,7 +81,7 @@ if(isset($_POST['usersubmit'])) {
  */
 	if (!isset($message)) {
 		$udatecreate	= date('Y-m-d H:i:s');
-		$outboxseed		"{\"@context\":\"https://www.w3.org/ns/activitystreams\",\"id\":\"outbox.json\",\"type\":\"OrderedCollection\",\"totalItems\":0,\"orderedItems\":[{}]}";
+		$outboxseed	= "{\"@context\":\"https://www.w3.org/ns/activitystreams\",\"id\":\"outbox.json\",\"type\":\"OrderedCollection\",\"totalItems\":0,\"orderedItems\":[{}]}";
 		$message = "SQL";
 		$useraddq = "INSERT INTO ".TBLPREFIX."users (user_id, user_name, user_display_name, user_pass, user_email, user_date_of_birth, user_level, user_actor_type, user_outbox, user_locale, user_location, user_time_zone, user_bio, user_created) VALUES ('', '".$username."', '".$userdname."', '".$hash_pass."', '".$useremail."', '".$userdob."', '".$userlvl."', '".$usertype."', '".$outboxseed."', '".$userlocale."', '".$userlocation."', '".$usertzone."', '".$userbio."', '".$udatecreate."')";
 		$useraddquery = mysqli_query($dbconn,$useraddq);
@@ -99,7 +99,7 @@ include "header.php";
 include "../nav.php";
 ?>
 
-			<article class="w3-content w3-padding">
+			<article class="w3-padding w3-col s12 m8 l10">
 <?php
 switch ($message) {
 	case "USERNAME_TAKEN":
