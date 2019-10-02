@@ -21,17 +21,17 @@ require_once	"../includes/verify-cookies.php";
 if(isset($_POST['profsubmit'])) {
 
 	/* Set our variables */
-	$userid			= $u_id;
-	$username		= $u_name;
-	$userdname		= nicetext($_POST['user-dname']);
-	$useremail		= $_POST['user-email'];
-	$userdob			= $_POST['user-dob'];
-	$userprvkey		= $_POST['user-prv-key'];
-	$userpubkey		= $_POST['user-pub-key'];
-	$userlocale		= $_POST['user-l10n'];
-	$userlocation	= $_POST['user-loc'];
-	$usertzone		= $_POST['user-tzone'];
-	$userbio			= nicetext($_POST['user-bio']);
+	$userid        = $u_id;
+	$username      = $u_name;
+	$userdname     = nicetext($_POST['user-dname']);
+	$useremail     = $_POST['user-email'];
+	$userdob       = $_POST['user-dob'];
+	$userprvkey    = $_POST['user-prv-key'];
+	$userpubkey    = $_POST['user-pub-key'];
+	$userlocale    = $_POST['user-l10n'];
+	$userlocation  = $_POST['user-loc'];
+	$usertzone     = $_POST['user-tzone'];
+	$userbio       = nicetext($_POST['user-bio']);
 
 	/**
 	 * If we don't have public or private keys, let's make some
@@ -63,11 +63,11 @@ if(isset($_POST['profsubmit'])) {
 
 	}
 
-	$userupdq = "UPDATE ".TBLPREFIX."users SET user_display_name='".$userdname."', user_email='".$useremail."', user_date_of_birth='".$userdob."', user_pub_key='".$pubkey."', user_locale='".$userlocale."', user_location='".$userlocation."', user_time_zone='".$usertzone."', user_bio='".$userbio."' WHERE user_name='".$username."'";
+	$userupdq = "UPDATE ".TBLPREFIX."users SET user_display_name='".$userdname."', user_email='".$useremail."', user_date_of_birth='".$userdob."', user_pub_key='".$pubkey."', user_locale='".$userlocale."', user_location='".$userlocation."', user_time_zone='".$usertzone."', user_bio='".$userbio."' WHERE user_name='".$_COOKIE['uname']."'";
 	$userupdquery = mysqli_query($dbconn,$userupdq);
 
 	/* reload the page by redirecting to itself */
-	redirect($website_url."dash/profile.php");
+	#redirect($website_url."dash/profile.php");
 
 } /* end if isset $_POST['profsubmit'] */
 /**  END FORM PROCESSING  ****************************************************/
@@ -81,8 +81,8 @@ include "nav.php";
 ?>
 
 			<article class="w3-padding w3-col s12 m8 l10">
-<?php echo $userupdq; ?>
-				<h2 class="w3-padding"><?php echo _("Profile"); ?></h2>
+
+                <h2 class="w3-padding"><?php echo _("Profile"); ?></h2>
 
 				<form method="POST" action="<?php echo htmlspecialchars($website_url."dash/profile.php"); ?>">
 					<!-- <input type="hidden" value="<?php echo $u_id?>"> -->

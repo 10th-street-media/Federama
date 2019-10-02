@@ -576,6 +576,7 @@ require			"../../includes/database-connect.php";
     user_banned_by varchar(10),
     user_created datetime NOT NULL,
     user_last_login datetime NOT NULL,
+    user_session varchar(128),
     PRIMARY KEY (user_id),
     UNIQUE KEY user_name (user_name),
     KEY user_date_of_birth (user_date_of_birth),
