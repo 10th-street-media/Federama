@@ -1,5 +1,5 @@
 <?php
-/*
+/* PSR-2
  * pub/includes/fed-nav.php
  *
  * This is a navigation menu for some public facing webpages in Federama.
@@ -27,15 +27,15 @@ while ($followersopt = mysqli_fetch_assoc($followersquery)) {
     <!-- THE CONTAINER for the main content -->
     <main class="w3-container w3-content" style="max-width:1400px;margin-top:40px;">
 
-    <!-- THE GRID -->
-    <div class="w3-cell-row w3-container">
+        <!-- THE GRID -->
+        <div class="w3-cell-row w3-container">
 
             <nav class="w3-col w3-panel w3-cell m3">
                 <div class="w3-card-2 w3-theme-l3 w3-padding">
                     <p class="w3-center">
-                    <a href="<?php echo $website_url."users/".$username; ?>"><img class="w3-block" src="<?php echo $website_url."images/avatars/".$username.".png" ?>" alt="<?php echo _("Avatar for ").$username; ?>" title="<?php echo _("Avatar for ").$username; ?>"></a>
-                    <b><?php echo $userdname; ?></b><br>
-                    <?php echo "@".$username."@".short_url($website_url); ?><br>
+                        <a href="<?php echo $website_url."users/".$username; ?>"><img class="w3-block" src="<?php echo $website_url."images/avatars/".$username.".png" ?>" alt="<?php echo _("Avatar for ").$username; ?>" title="<?php echo _("Avatar for ").$username; ?>"></a>
+                        <b><?php echo $userdname; ?></b><br>
+                        <?php echo "@".$username."@".short_url($website_url); ?><br>
                     <hr>
                     <?php echo $userbio; ?><br>
                     <hr>
@@ -43,8 +43,9 @@ while ($followersopt = mysqli_fetch_assoc($followersquery)) {
                     <?php echo _("Followers:")." ".$followersqty; ?><br>
                     <?php echo _("Following:")." ".$followingqty; ?><br>
                     <hr>
-                    <a href="#" class="w3-bar-item w3-button" title="<?php echo _('Follow '.$username); ?>"><i class="fa fa-lg fa-check"></i>&nbsp;<?php echo _("Follow"); ?></a>
+                    <!-- <a href="#" class="w3-bar-item w3-button" title="<?php echo _('Follow '.$username); ?>"><i class="fa fa-lg fa-check"></i>&nbsp;<?php echo _("Follow"); ?></a> -->
                     </p>
+<!--
                     <ul>
                         <li><a href="#" title="<?php echo _("Mentions will show any posts where the user is mentioned."); ?>"><?php echo _("Mentions"); ?></a></li>
                         <li><a href="#" title="<?php echo _("A list of the user's friends (Friends follow each other)."); ?>"><?php echo _("Friends"); ?></a></li>
@@ -54,6 +55,7 @@ while ($followersopt = mysqli_fetch_assoc($followersquery)) {
                         <li><a href="#" title="<?php echo _("A list of the user's likes."); ?>"><?php echo _("Likes"); ?></a></li>
                         <li><a href="#" title="<?php echo _("A list of the user's dislikes."); ?>"><?php echo _("Dislikes"); ?></a></li>
                     </ul>
+-->
                 </div>
             </nav>
 
