@@ -34,6 +34,7 @@ include "nav.php";
 						<hr>
 						<span><?php echo _("Number of users: ").user_quantity($user); ?></span><br>
 						<span><?php echo _("Number of posts: ").post_quantity($post); ?></span><br>
+                        <span><?php echo _("Number of pages: ").page_quantity($page); ?></span><br>
 						<span><?php echo _("Number of messages: ").message_quantity($message); ?></span><br>
 						<span><?php echo "<b>".$website_name."</b>".(" is running ").VERSION; ?></span>
 					</div>
@@ -48,7 +49,7 @@ include "nav.php";
 				</section>
 
 				<section class="w3-half w3-container">
-					<div class="w3-theme-l3 w3-padding">
+					<div class="w3-theme-l3 w3-padding w3-margin-top">
 						<h4><?php echo _("Recent posts"); ?></h4>
 						<hr>
 <?php
