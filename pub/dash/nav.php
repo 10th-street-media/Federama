@@ -16,8 +16,18 @@
 
             <nav class="w3-col s12 m4 l2 w3-bar-block w3-theme-d2 fed-sidebar">
                 <a href="<?php echo $website_url."dash/index.php"; ?>" class="w3-bar-item w3-button" title="<?php echo _("Your homepage"); ?>"><i class="fa fa-lg fa-home"></i>&nbsp;<?php echo _("Home"); ?></a>
-                <a href="<?php echo $website_url."dash/posts.php"; ?>" class="w3-bar-item w3-button" title="<?php echo _("Posts on this instance."); ?>"><i class="fa fa-lg fa-pencil"></i>&nbsp;<?php echo _("Posts"); ?></a>
-                <a href="<?php echo $website_url."dash/pages.php"; ?>" class="w3-bar-item w3-button" title="<?php echo _("Pages are posts that exist outside the timeline."); ?>"><i class="fa fa-lg fa-file-text"></i>&nbsp;<?php echo _("Pages"); ?></a>
+                <a href="#" class="w3-bar-item w3-button" title="<?php echo _("Posts on this instance."); ?>" onclick="myPosts()"><i class="fa fa-lg fa-pencil"></i>&nbsp;<?php echo _("Posts"); ?>&nbsp;<i class="fa fa-caret-down w3-right"></i></a>
+                    <div id="postMenu" class="w3-hide w3-white w3-card">
+                        <a href="<?php echo $website_url."dash/posts.php"; ?>" class="w3-bar-item w3-button"><?php echo _('All posts'); ?></a>
+                        <a href="<?php echo $website_url."dash/add-post.php"; ?>" class="w3-bar-item w3-button"><?php echo _('New post'); ?></a>
+                        <a href="<?php echo $website_url."dash/categories.php"; ?>" class="w3-bar-item w3-button"><?php echo _('Categories'); ?></a>
+                        <a href="<?php echo $website_url."dash/tags.php"; ?>" class="w3-bar-item w3-button"><?php echo _('Tags'); ?></a>
+                    </div>
+                <a href="#" class="w3-bar-item w3-button" title="<?php echo _("Pages are posts that exist outside the blog\'s timeline."); ?>" onclick="myPages()"><i class="fa fa-lg fa-file-text"></i>&nbsp;<?php echo _("Pages"); ?>&nbsp;<i class="fa fa-caret-down w3-right"></i></a>
+                    <div id="pageMenu" class="w3-hide w3-white w3-card">
+                        <a href="<?php echo $website_url."dash/pages.php"; ?>" class="w3-bar-item w3-button"><?php echo _('All pages'); ?></a>
+                        <a href="<?php echo $website_url."dash/add-page.php"; ?>" class="w3-bar-item w3-button"><?php echo _('New page'); ?></a>
+                    </div>
                 <a href="#" class="w3-bar-item w3-button" title="<?php echo _("Your inbox and outbox."); ?>" onclick="myMessages()"><i class="fa fa-lg fa-commenting"></i>&nbsp;<?php echo _("Messages"); ?>&nbsp;<i class="fa fa-caret-down w3-right"></i></a>
                     <div id="messageMenu" class="w3-hide w3-white w3-card">
                         <a href="<?php echo $website_url."dash/messages.php"; ?>" class="w3-bar-item w3-button"><?php echo _('Messages Home'); ?></a>
@@ -87,6 +97,30 @@ while($adminopt = mysqli_fetch_assoc($adminquery)) {
 ?>
             </nav>
             <script>
+            function myPosts() {
+              var x = document.getElementById("postMenu");
+              if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+                x.previousElementSibling.className += " w3-theme-d1";
+              } else {
+                x.className = x.className.replace(" w3-show", "");
+                x.previousElementSibling.className =
+                x.previousElementSibling.className.replace(" w3-theme-d1", "");
+              }
+            }
+
+            function myPages() {
+              var x = document.getElementById("pageMenu");
+              if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+                x.previousElementSibling.className += " w3-theme-d1";
+              } else {
+                x.className = x.className.replace(" w3-show", "");
+                x.previousElementSibling.className =
+                x.previousElementSibling.className.replace(" w3-theme-d1", "");
+              }
+            }
+
             function myMessages() {
               var x = document.getElementById("messageMenu");
               if (x.className.indexOf("w3-show") == -1) {
