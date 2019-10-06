@@ -76,6 +76,17 @@ include "nav.php";
 <script>
 $(document).ready(function() {
     $('#summernote').summernote({
+        toolbar: [
+            ['style', ['style']],
+            ['font', ['bold','italic','underline','strikethrough','clear']],
+            ['fontname', ['fontname']],
+            ['fontsize', ['fontsize']],
+            ['color', ['color']],
+            ['para', ['ul','ol','paragraph']],
+            ['table', ['table']],
+            ['insert', ['hr','link','picture','video']],
+            ['view', ['fullscreen','codeview','help']]
+        ],
         height: 240
     });
 });

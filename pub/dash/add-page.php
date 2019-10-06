@@ -23,7 +23,7 @@ if (isset($_POST['page-submit'])) {
     $text   = nicetext($_POST['page-text']);
     $now    = date("Y-m-d H:i:s");
 
-    $postq  = "INSERT INTO ".TBLPREFIX."posts (user_id, post_date, post_title, post_slug, post_text, post_status, post_type, post_modified_date, post_tags, post_categories, comment_status, ping_status) VALUES ('".$_COOKIE['id']."', '".$now."', '".$title."', '".$slug."', '".$text."', 'PUBLIC', 'PAGE', '".$now."', '', '', 'OPEN', 'OPEN')";
+    $postq  = "INSERT INTO ".TBLPREFIX."posts (post_id, user_id, post_date, post_title, post_slug, post_text, post_status, post_type, post_modified_date, post_tags, post_categories, comments_open, pings_open) VALUES ('', '".$_COOKIE['id']."', '".$now."', '".$title."', '".$slug."', '".$text."', 'PUBLIC', 'PAGE', '".$now."', '', '', '1', '1')";
     $postquery = mysqli_query($dbconn,$postq);
     redirect($website_url."dash/pages.php");
 }
@@ -47,6 +47,17 @@ include "nav.php";
 <script>
 $(document).ready(function() {
     $('#summernote').summernote({
+        toolbar: [
+            ['style', ['style']],
+            ['font', ['bold','italic','underline','strikethrough','clear']],
+            ['fontname', ['fontname']],
+            ['fontsize', ['fontsize']],
+            ['color', ['color']],
+            ['para', ['ul','ol','paragraph']],
+            ['table', ['table']],
+            ['insert', ['hr','link','picture','video']],
+            ['view', ['fullscreen','codeview','help']]
+        ],
         height: 240
     });
 });
