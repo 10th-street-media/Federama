@@ -50,9 +50,11 @@ if (isset($_POST['post-submit'])) {
     $title  = nicetext($_POST['post-title']);
     $slug   = makeslug($_POST['post-title']);
     $text   = nicetext($_POST['post-text']);
+    $tags   = nicetext($_POST['post-tags']);
+    $cats   = nicetext($_POST['post-categories']);
     $now    = date("Y-m-d H:i:s");
 
-    $updpostq   = "UPDATE ".TBLPREFIX."posts SET post_title='".$title."', post_slug='".$slug."', post_text='".$text."', post_modified_date='".$now."' WHERE post_id='".$id."'";
+    $updpostq   = "UPDATE ".TBLPREFIX."posts SET post_title='".$title."', post_slug='".$slug."', post_text='".$text."', post_tags='".$tags."', post_categories='".$cats."', post_modified_date='".$now."' WHERE post_id='".$id."'";
     $updpostquery = mysqli_query($dbconn,$updpostq);
     redirect($website_url."dash/posts.php");
 }
