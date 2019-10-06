@@ -1,5 +1,7 @@
 <?php
-/*
+/**
+ * WAI-ARIA
+ * PSR-2
  * pub/dash/edit-post.php
  *
  * Allows users to edit a post.
@@ -36,7 +38,6 @@ if ($sel_id != '') {
         $pcats      = $getpostopt['post_categories'];
         $pping      = $getpostopt['ping_status'];
         $pcomment   = $getpostopt['comment_status'];
-
     }
 }
 
@@ -67,9 +68,11 @@ include "nav.php";
                 <h2 class="w3-padding"><?php echo _("Edit post"); ?></h2>
                 <form method="post" action="edit-post.php">
                     <input type="hidden" name="post-id" id="post-id" value="<?php echo $sel_id; ?>">
-                    <input type="text" name="post-title" id="post-title" class="w3-input w3-padding w3-margin-left" value="<?php echo $ptitle; ?>"><br>
-                    <textarea name="post-text" id="summernote" class="w3-input w3-padding w3-margin-left" rows="12"><?php echo $ptext; ?></textarea><br>
-                    <input type="submit" name="post-submit" id="post-submit" class="w3-theme-dark w3-button w3-margin-left" value="<?php echo _('UPDATE POST'); ?>">
+                    <input type="text" name="post-title" id="post-title" role="textbox" aria-multiline="false" class="w3-input w3-padding w3-margin-left" value="<?php echo $ptitle; ?>" tabindex="1"><br>
+                    <textarea name="post-text" id="summernote" role="textbox" aria-multiline="true" class="w3-input w3-padding w3-margin-left" rows="12" tabindex="2"><?php echo $ptext; ?></textarea><br>
+                    <input type="text" name="post-categories" id="post-categories" role="textbox" aria-multiline="false" class="w3-input w3-padding w3-margin-left" placeholder="<?php echo _('Categories'); ?>" title="<?php echo _('Please separate categories with commas'); ?>" value="<?php echo $pcats; ?>" tabindex="3"><br>
+                    <input type="text" name="post-tags" id="post-tags" role="textbox" aria-multiline="false" class="w3-input w3-padding w3-margin-left" placeholder="<?php echo _('Tags'); ?>" title="<?php echo _('Please separate tags with commas'); ?>" value="<?php echo $ptags; ?>" tabindex="4"><br>
+                    <input type="submit" name="post-submit" id="post-submit" class="w3-theme-dark w3-button w3-margin-left" value="<?php echo _('UPDATE POST'); ?>" tabindex="5">
                 </form>
             </article> <!-- end article (It's not really an article, but it serves the same purpose.) -->
 
