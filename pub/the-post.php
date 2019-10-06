@@ -96,7 +96,7 @@ if ($postcats !== NULL || $postcats !== '') {
      */
     $cats = explode(',',$postcats);
     foreach ($cats as $cat) {
-        echo "<a href=\"".$website_url."the-category.php?cat=".urlencode($cat)."\">".$cat."</a>&nbsp;&nbsp;";
+        echo "<a href=\"".$website_url."categories/".urlencode($cat)."\">".$cat."</a>&nbsp;&nbsp;";
     }
     echo "</span>\n";
     echo "\t\t\t\t</div>\n";
@@ -112,7 +112,7 @@ if ($posttags !== NULL || $posttags !== '') {
      */
     $tags = explode(',',$posttags);
     foreach ($tags as $tag) {
-        echo "<a href=\"".$website_url."the-tag.php?tag=".urlencode($tag)."\">".$tag."</a>&nbsp;&nbsp;";
+        echo "<a href=\"".$website_url."tags/".urlencode($tag)."\">".$tag."</a>&nbsp;&nbsp;";
     }
     echo "</span>\n";
     echo "\t\t\t\t</div>\n";
