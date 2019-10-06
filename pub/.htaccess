@@ -3,12 +3,28 @@ RewriteEngine On
 RewriteBase /
 
 # to get https://www.example.com/users/username
-RewriteRule ^users/(.*)/$ /the-user.php?name=$1
-#RewriteRule ^users/(.*)$ /the-user.php?name=$1
+#RewriteRule ^users/(.*)/$ /the-user.php?name=$1
+RewriteRule ^users/(.*)$ /the-user.php?name=$1
 
-# to get https://www.example.com/posts/XXXXXXXX
-RewriteRule ^posts/(.*)/$ /the-post.php?pid=$1
-#RewriteRule ^posts/(.*)$ /the-post.php?pid=$1
+# to get https://www.example.com/posts/some-title
+#RewriteRule ^posts/(.*)/$ /the-post.php?title=$1
+RewriteRule ^posts/(.*)$ /the-post.php?title=$1
+
+# to get https://www.example.com/pages/some-title
+#RewriteRule ^pages/(.*)/$ /the-page.php?title=$1
+RewriteRule ^pages/(.*)$ /the-page.php?title=$1
+
+# to get https://www.example.com/messages/XXXXXXXX
+#RewriteRule ^messages/(.*)/$ /the-message.php?mid=$1
+RewriteRule ^messages/(.*)$ /the-message.php?mid=$1
+
+# to get https://www.example.com/categories/some-category
+#RewriteRule ^categories/(.*)/$ /the-category.php?cat=$1
+RewriteRule ^categories/(.*)$ /the-category.php?cat=$1
+
+# to get https://www.example.com/tags/some-tag
+#RewriteRule ^tags/(.*)/$ /the-tag.php?tag=$1
+RewriteRule ^tags/(.*)$ /the-tag.php?tag=$1
 
 # to get https://www.example.com/user/username/atom.xml
 RewriteRule ^users/(.*)/atom.xml$ /users/$1-atom.xml
