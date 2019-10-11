@@ -74,6 +74,8 @@ function nicetext($text) {
 
 	// converts special characters (i.e. < > &, etc) into their html entities
 	#$text = htmlspecialchars($text,ENT_QUOTES,'UTF-8',true);
+    $text = preg_replace('/</i', '&lt;', $text);
+    $text = preg_replace('/>/i', '&gt;', $text);
 
 	$text = preg_replace('/\'/i', '&apos;', $text);
 	return $text;
