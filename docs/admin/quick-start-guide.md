@@ -3,7 +3,7 @@
 This Quick Start Guide for **Federama** v0.1 covers the requirements, setup, and installation process. For more detailed information about administering a **Federama** website, please read the [Administrator's Manual](admin-manual.md).
 
 ### Requirements
-**Federama** v0.1 was written on a laptop computer running Linux Mint 19, using MariaDB 10.1.40 for the database, PHP 7.2 for the language, and nginx 1.14 for the web server. The [testing instance](https://blackh3art.media.dating) is in a hosted environment running Ubuntu Server with Apache 2.2.x, PHP 7.2, and MySQL 5.6.
+**Federama** v0.3 was written on a laptop computer running Linux Mint 19.2, using MariaDB 10.1.41 for the database, PHP 7.2 for the language, and nginx 1.14 for the web server. The [testing instance](https://blackh3art.media.dating) is in a hosted environment running Ubuntu Server with Apache 2.2.x, PHP 7.2, and MySQL 5.6.
 
 The requirements to run **Federama** are:
 + PHP 7.2
